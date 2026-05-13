@@ -127,10 +127,16 @@
   .form-card h2 { font-size: 28px; }
   .fset { margin-top: 28px; }
   .fset-label { font-size: 9px; }
+  /* iOS Safari auto-zoom prevention: inputs must be ≥ 16px */
+  .fld input, .fld select, .fld textarea { font-size: 16px; }
+  /* Booking grid — reduce bottom padding */
+  .bk-grid { padding-bottom: 64px; }
   /* Event types — 2 columns */
   .event-type span { padding: 14px 8px; font-size: 11px; }
   /* Budget pills */
   .budget span { padding: 10px 14px; font-size: 10px; }
+  /* Time slots — 44px touch target */
+  .slot { min-height: 44px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
   /* FAQ */
   .faq-grid h2 { font-size: clamp(28px, 7.5vw, 52px); }
   .faq-item summary { font-size: 17px; gap: 16px; }
@@ -144,11 +150,16 @@
 
 @media (max-width: 479px) {
   .bk-hero { padding: 80px 0 32px; }
-  .form-card { padding: 32px 18px 28px; }
+  .form-card { padding: 28px 16px 24px; }
   .event-types { grid-template-columns: 1fr 1fr; }
+  .event-type span { padding: 12px 6px; font-size: 10px; }
   .budgets { gap: 6px; }
+  .budget span { padding: 9px 12px; font-size: 9px; letter-spacing: 0.14em; }
   .form-actions { flex-direction: column; align-items: stretch; }
   .form-actions .btn { width: 100%; justify-content: center; }
+  .faq-item summary { font-size: 15px; }
+  .channel .v { font-size: 15px; }
+  .side-card h3 { font-size: 20px; }
 }
 </style>
 </head>

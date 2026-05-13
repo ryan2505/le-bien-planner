@@ -27,7 +27,8 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+@media (max-width: 900px) { html { scroll-padding-top: 64px; } }
 
 body {
   background: var(--ink);
@@ -42,7 +43,8 @@ body {
   overflow-x: hidden;
 }
 
-a { color: inherit; text-decoration: none; }
+a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+a, button { touch-action: manipulation; }
 img { display: block; max-width: 100%; }
 
 /* ── Typography ─────────────────────────── */
@@ -567,8 +569,8 @@ body.menu-open { overflow: hidden; }
 /* ─── Nav safe area on mobile ────────────────────────────────── */
 @media (max-width: 900px) {
   .nav {
-    padding-left: max(20px, env(safe-area-inset-left, 0px));
-    padding-right: max(20px, env(safe-area-inset-right, 0px));
+    padding-left: max(24px, env(safe-area-inset-left, 0px));
+    padding-right: max(24px, env(safe-area-inset-right, 0px));
   }
 }
 
@@ -577,6 +579,11 @@ body.menu-open { overflow: hidden; }
   .marquee { font-size: 20px; padding: 20px 0; }
   .marquee-track { gap: 48px; }
   .marquee-track span { gap: 48px; }
+}
+@media (max-width: 479px) {
+  .marquee { font-size: 17px; padding: 16px 0; }
+  .marquee-track { gap: 32px; animation-duration: 28s; }
+  .marquee-track span { gap: 32px; }
 }
 
 /* ─── Footer ──────────────────────────────────────────────────── */

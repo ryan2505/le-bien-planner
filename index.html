@@ -323,15 +323,27 @@
 }
 
 @media (max-width: 479px) {
-  /* ── Hero — hide image grid on very small phones ── */
+  /* ── Hero ── */
   .hero { padding: 80px 0 40px; }
   .hero-right { display: none; }
+  /* ── Editorial image ── */
+  .edi-image { height: 260px; }
+  .edi-stamp { width: 100px; height: 100px; font-size: 11px; padding: 10px; right: 0; bottom: -12px; }
+  .edi-text h2 { font-size: clamp(28px, 8vw, 52px); }
+  /* ── Gallery teaser ── */
+  .gt-grid { grid-auto-rows: 130px; }
+  .gt-head h2 { font-size: clamp(28px, 8vw, 52px); }
+  /* ── Testimonials ── */
+  .testi-card blockquote { font-size: 15px; }
   /* ── Why — single column ── */
   .why-grid { grid-template-columns: 1fr; }
   .why-cell { border-right: none; border-bottom: 1px solid var(--line); padding: 32px 0; }
   .why-cell:last-child { border-bottom: none; }
+  .why-cell .big { font-size: 44px; }
   /* ── Services ── */
   .svc { padding: 28px 16px 32px; }
+  /* ── Social feed — stay 2 cols ── */
+  .feed-grid { gap: 8px; }
 }
 </style>
 </head>

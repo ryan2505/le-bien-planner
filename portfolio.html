@@ -107,8 +107,8 @@
   .pf-hero { padding: 96px 0 40px; }
   .pf-hero h1 { font-size: clamp(36px, 10vw, 80px); }
   .pf-hero .lead { font-size: 17px; }
-  /* Filters */
-  .filter-btn { padding: 9px 14px; font-size: 10px; }
+  /* Filters — 44px touch target */
+  .filter-btn { padding: 9px 14px; font-size: 10px; min-height: 44px; display: inline-flex; align-items: center; }
   /* Case studies */
   .case { padding: 72px 0; }
   .case-head { margin-bottom: 36px; }
@@ -126,12 +126,20 @@
 
 @media (max-width: 479px) {
   .pf-hero { padding: 80px 0 32px; }
-  .case { padding: 52px 0; }
+  .pf-hero h1 { font-size: clamp(30px, 9vw, 56px); }
+  .filters { gap: 6px; }
+  .filter-btn { padding: 8px 12px; font-size: 9px; letter-spacing: 0.22em; min-height: 40px; }
+  .case { padding: 48px 0; }
   .case-head { flex-direction: column; align-items: flex-start; }
-  .case-1-grid { grid-template-rows: repeat(4, 200px); }
+  .case-head h2 { font-size: clamp(22px, 7vw, 44px); }
+  .case-1-grid { grid-template-rows: repeat(4, 180px); }
+  .case-2-grid { grid-template-rows: repeat(3, 180px); }
+  .case-3-grid { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, 160px); }
   .case-note { grid-template-columns: 1fr; gap: 12px; }
-  .ba-card { height: 240px; }
-  .press-row { font-size: 17px; gap: 14px 24px; }
+  .case-note .v2 { font-size: 15px; }
+  .ba-card { height: 220px; }
+  .press h2 { font-size: clamp(18px, 5vw, 32px); }
+  .press-row { font-size: 15px; gap: 12px 20px; }
 }
 </style>
 </head>
