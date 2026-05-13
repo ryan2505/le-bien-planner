@@ -374,3 +374,243 @@ image-slot {
 .spacer-l { height: 80px; }
 .spacer-m { height: 48px; }
 .spacer-s { height: 24px; }
+
+/* ══════════════════════════════════════════════════════════════
+   MOBILE RESPONSIVE SYSTEM — global shared components only
+   Breakpoints used: 900px (nav) · 767px (mobile) · 479px (xs)
+   Desktop ≥ 901px is NEVER modified in this block.
+══════════════════════════════════════════════════════════════ */
+
+/* ─── Nav end: CTA + hamburger wrapper ─────────────────────── */
+.nav-end {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* ─── Hamburger button ──────────────────────────────────────── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.nav-hamburger .bar {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--ivory);
+  border-radius: 1px;
+  transform-origin: center;
+  transition:
+    transform 0.35s cubic-bezier(.4, 0, .2, 1),
+    opacity 0.25s ease,
+    width 0.25s ease;
+}
+.nav-hamburger.open .bar:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-hamburger.open .bar:nth-child(2) { opacity: 0; width: 0; }
+.nav-hamburger.open .bar:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+@media (max-width: 900px) {
+  .nav-hamburger { display: flex; }
+}
+
+/* ─── Mobile overlay menu ───────────────────────────────────── */
+.nav-mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 49;
+  display: flex;
+  flex-direction: column;
+  background: rgba(10, 10, 10, 0.98);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  padding: 88px 28px 0;
+  padding-bottom: max(40px, calc(env(safe-area-inset-bottom, 0px) + 24px));
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-16px);
+  transition:
+    opacity 0.38s cubic-bezier(.4, 0, .2, 1),
+    transform 0.38s cubic-bezier(.4, 0, .2, 1),
+    visibility 0s linear 0.38s;
+  pointer-events: none;
+  overscroll-behavior: contain;
+}
+.nav-mobile-menu.open {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: all;
+  transition:
+    opacity 0.38s cubic-bezier(.4, 0, .2, 1),
+    transform 0.38s cubic-bezier(.4, 0, .2, 1),
+    visibility 0s linear 0s;
+}
+@media (min-width: 901px) {
+  .nav-mobile-menu { display: none !important; }
+}
+
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.mobile-nav-links a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--display);
+  font-style: italic;
+  font-size: clamp(28px, 7.5vw, 44px);
+  color: var(--ivory-dim);
+  letter-spacing: -0.01em;
+  transition: color 0.2s ease, padding-left 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.mobile-nav-links a:first-child { border-top: 1px solid var(--line); }
+.mobile-nav-links a.active,
+.mobile-nav-links a:hover { color: var(--gold); }
+.mobile-nav-links a:active { padding-left: 6px; }
+.mobile-nav-links .mn-num {
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: var(--ivory-mute);
+  flex-shrink: 0;
+}
+
+.mobile-nav-footer {
+  padding: 24px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex-shrink: 0;
+}
+.mobile-nav-footer .btn {
+  width: 100%;
+  justify-content: center;
+}
+.mobile-contact-line {
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ivory-mute);
+  padding-bottom: 8px;
+}
+.mobile-contact-line a {
+  color: var(--gold);
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* iOS scroll lock */
+body.menu-open { overflow: hidden; }
+
+/* ─── Reveal — no staggered delay on mobile (perf) ─────────── */
+@media (max-width: 767px) {
+  .reveal.d1, .reveal.d2, .reveal.d3, .reveal.d4 { transition-delay: 0s; }
+}
+
+/* ─── Section padding ────────────────────────────────────────── */
+@media (max-width: 767px) { section { padding: 72px 0; } }
+@media (max-width: 479px) { section { padding: 60px 0; } }
+
+/* ─── Wrap — safe area padding ──────────────────────────────── */
+@media (max-width: 767px) {
+  .wrap {
+    padding-left: max(24px, env(safe-area-inset-left, 0px));
+    padding-right: max(24px, env(safe-area-inset-right, 0px));
+  }
+}
+
+/* ─── Typography scaling ─────────────────────────────────────── */
+@media (max-width: 767px) {
+  .display { font-size: clamp(36px, 10.5vw, 72px); }
+  .lead    { font-size: clamp(17px, 4.5vw, 22px); }
+}
+
+/* ─── Buttons — touch targets ────────────────────────────────── */
+@media (max-width: 767px) {
+  .btn {
+    padding: 15px 24px;
+    font-size: 10px;
+    min-height: 48px;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  .btn .arrow { font-size: 14px; }
+  .nav-cta {
+    min-height: 44px;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+@media (max-width: 479px) {
+  .nav-cta { display: none; }
+}
+
+/* ─── Nav safe area on mobile ────────────────────────────────── */
+@media (max-width: 900px) {
+  .nav {
+    padding-left: max(20px, env(safe-area-inset-left, 0px));
+    padding-right: max(20px, env(safe-area-inset-right, 0px));
+  }
+}
+
+/* ─── Marquee ─────────────────────────────────────────────────── */
+@media (max-width: 767px) {
+  .marquee { font-size: 20px; padding: 20px 0; }
+  .marquee-track { gap: 48px; }
+  .marquee-track span { gap: 48px; }
+}
+
+/* ─── Footer ──────────────────────────────────────────────────── */
+@media (max-width: 639px) {
+  .footer { padding: 64px 0 32px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; padding-bottom: 40px; }
+  .footer-bottom { padding-top: 20px; font-size: 10px; }
+}
+
+/* ─── WhatsApp FAB — safe area ───────────────────────────────── */
+@media (max-width: 767px) {
+  .whatsapp-fab {
+    width: 52px; height: 52px;
+    bottom: max(18px, calc(env(safe-area-inset-bottom, 0px) + 14px));
+    right: 18px;
+  }
+  .whatsapp-fab svg { width: 22px; height: 22px; }
+}
+
+/* ─── Page CTA sections (bottom of inner pages) ─────────────── */
+.page-cta-section {
+  padding: 140px 0;
+  text-align: center;
+}
+@media (max-width: 767px) {
+  .page-cta-section { padding: 72px 0; }
+  .page-cta-section h2 { font-size: clamp(30px, 8vw, 60px); }
+}
+@media (max-width: 479px) {
+  .page-cta-section { padding: 60px 0; }
+}
+
+/* ─── Spacers ─────────────────────────────────────────────────── */
+@media (max-width: 767px) {
+  .spacer-l { height: 48px; }
+  .spacer-m { height: 28px; }
+}

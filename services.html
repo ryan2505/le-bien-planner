@@ -75,6 +75,36 @@
 .proc .step { font-family: var(--display); font-style: italic; color: var(--gold); font-size: 18px; margin-bottom: 16px; }
 .proc h4 { font-family: var(--display); font-size: 22px; margin-bottom: 12px; }
 .proc p { font-size: 13px; color: var(--ivory-dim); line-height: 1.6; }
+
+/* ── SERVICES — Mobile overrides ── */
+@media (max-width: 767px) {
+  /* Hero */
+  .svc-hero { padding: 96px 0 44px; }
+  .svc-hero h1 { font-size: clamp(36px, 10vw, 72px); }
+  .svc-hero .lead { font-size: 17px; margin-top: 20px; }
+  /* Disciplines */
+  .disc { padding: 48px 0; gap: 24px; }
+  .disc-image { height: 260px; }
+  .disc-body h2 { font-size: clamp(28px, 7.5vw, 48px); }
+  .disc-body p { font-size: 15px; }
+  .disc-body ul { grid-template-columns: 1fr; gap: 6px; }
+  /* Packages */
+  .pack-head h2 { font-size: clamp(28px, 7.5vw, 52px); }
+  .pack { padding: 36px 24px 28px; gap: 18px; }
+  .pack h3 { font-size: 32px; }
+  .pack .price { font-size: 20px; }
+  /* Process */
+  .process-head h2 { font-size: clamp(28px, 7.5vw, 52px); }
+  .proc-grid { grid-template-columns: 1fr 1fr; }
+  .proc h4 { font-size: 18px; }
+}
+
+@media (max-width: 479px) {
+  .svc-hero { padding: 80px 0 36px; }
+  .proc-grid { grid-template-columns: 1fr; gap: 0; }
+  .proc { padding: 24px 0; }
+  .pack { padding: 28px 18px 22px; }
+}
 </style>
 </head>
 <body>

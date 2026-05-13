@@ -106,6 +106,45 @@
 .social-card h4 { font-family: var(--display); font-size: 22px; }
 .social-card p { font-size: 13px; color: var(--ivory-dim); }
 .social-card .handle { font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-top: auto; }
+
+/* ── CONTACT — Mobile overrides ── */
+@media (max-width: 767px) {
+  /* Hero */
+  .ct-hero { padding: 96px 0 40px; }
+  .ct-hero h1 { font-size: clamp(36px, 10vw, 80px); }
+  /* Contact rows — fix overflow on long email addresses */
+  .ct-row { grid-template-columns: 48px 1fr auto; gap: 12px; padding: 20px 0; }
+  .ct-row .n { font-size: 14px; }
+  .ct-row .body .val { font-size: 18px; word-break: break-all; }
+  .ct-row .body .lbl { font-size: 9px; }
+  .ct-row .arrow { font-size: 18px; }
+  /* Studio hours sidebar */
+  .ct-side { padding: 32px 24px; }
+  .ct-side h2 { font-size: 28px; }
+  .hours .day, .hours .time { font-size: 11px; }
+  /* Location */
+  .loc-text h2 { font-size: clamp(28px, 7.5vw, 52px); }
+  .loc-text .addr { font-size: 18px; padding: 18px 20px; }
+  .map { height: 320px; }
+  .map .pin-label { font-size: 14px; }
+  .map-tag, .map-tag-right { font-size: 9px; }
+  /* Social cards */
+  .social-card { padding: 24px 20px; }
+  .social-card h4 { font-size: 18px; }
+}
+
+@media (max-width: 479px) {
+  .ct-hero { padding: 80px 0 32px; }
+  /* Stack contact row to avoid email overflow */
+  .ct-row { grid-template-columns: 40px 1fr; }
+  .ct-row .arrow { display: none; }
+  .ct-row .body .val { font-size: 16px; }
+  /* Location buttons */
+  .loc-text > div { flex-direction: column; }
+  .loc-text > div .btn { width: 100%; justify-content: center; }
+  /* Social grid */
+  .social-grid { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>

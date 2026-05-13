@@ -100,6 +100,39 @@
   font-family: var(--display); font-style: italic; font-size: 28px; color: var(--ivory-dim);
 }
 .press-row span { letter-spacing: 0.02em; }
+
+/* ── PORTFOLIO — Mobile overrides ── */
+@media (max-width: 767px) {
+  /* Hero */
+  .pf-hero { padding: 96px 0 40px; }
+  .pf-hero h1 { font-size: clamp(36px, 10vw, 80px); }
+  .pf-hero .lead { font-size: 17px; }
+  /* Filters */
+  .filter-btn { padding: 9px 14px; font-size: 10px; }
+  /* Case studies */
+  .case { padding: 72px 0; }
+  .case-head { margin-bottom: 36px; }
+  .case-head h2 { font-size: clamp(26px, 7vw, 52px); }
+  .case-meta { text-align: left; margin-top: 12px; }
+  .case-note { grid-template-columns: 1fr 1fr; gap: 20px; padding-top: 20px; }
+  .case-note .v2 { font-size: 16px; }
+  /* Before/after */
+  .ba-card { height: 300px; }
+  .ba-head h2 { font-size: clamp(28px, 7.5vw, 52px); }
+  /* Press */
+  .press h2 { font-size: clamp(22px, 5.5vw, 40px); }
+  .press-row { font-size: 20px; gap: 20px 36px; margin-top: 36px; }
+}
+
+@media (max-width: 479px) {
+  .pf-hero { padding: 80px 0 32px; }
+  .case { padding: 52px 0; }
+  .case-head { flex-direction: column; align-items: flex-start; }
+  .case-1-grid { grid-template-rows: repeat(4, 200px); }
+  .case-note { grid-template-columns: 1fr; gap: 12px; }
+  .ba-card { height: 240px; }
+  .press-row { font-size: 17px; gap: 14px 24px; }
+}
 </style>
 </head>
 <body>
@@ -281,7 +314,7 @@
   </div>
 </section>
 
-<section style="padding:140px 0; text-align:center; background:#0c0b08; border-top:1px solid var(--line);">
+<section class="page-cta-section" style="background:#0c0b08; border-top:1px solid var(--line);">
   <div class="wrap reveal">
     <div class="section-tag" style="justify-content:center; display:inline-flex">Begin yours</div>
     <h2 style="margin-top:24px; font-size: clamp(40px, 6vw, 80px); line-height:1;">Your event, <em style="color:var(--gold)">in this folio</em><br>twelve months from now.</h2>

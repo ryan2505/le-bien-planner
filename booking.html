@@ -117,6 +117,39 @@
 .faq-item summary .plus { color: var(--gold); font-style: italic; font-size: 28px; line-height: 1; }
 .faq-item[open] summary .plus { transform: rotate(45deg); }
 .faq-item p { margin-top: 18px; font-size: 14px; line-height: 1.7; color: var(--ivory-dim); max-width: 580px; }
+
+/* ── BOOKING — Mobile overrides ── */
+@media (max-width: 767px) {
+  /* Hero */
+  .bk-hero { padding: 96px 0 40px; }
+  .bk-hero h1 { font-size: clamp(36px, 10vw, 80px); }
+  /* Form */
+  .form-card h2 { font-size: 28px; }
+  .fset { margin-top: 28px; }
+  .fset-label { font-size: 9px; }
+  /* Event types — 2 columns */
+  .event-type span { padding: 14px 8px; font-size: 11px; }
+  /* Budget pills */
+  .budget span { padding: 10px 14px; font-size: 10px; }
+  /* FAQ */
+  .faq-grid h2 { font-size: clamp(28px, 7.5vw, 52px); }
+  .faq-item summary { font-size: 17px; gap: 16px; }
+  .faq-item summary .plus { font-size: 22px; }
+  /* Calendly card */
+  .calendly h3 { font-size: 22px; }
+  .slots { gap: 6px; }
+  /* Channel values */
+  .channel .v { font-size: 16px; }
+}
+
+@media (max-width: 479px) {
+  .bk-hero { padding: 80px 0 32px; }
+  .form-card { padding: 32px 18px 28px; }
+  .event-types { grid-template-columns: 1fr 1fr; }
+  .budgets { gap: 6px; }
+  .form-actions { flex-direction: column; align-items: stretch; }
+  .form-actions .btn { width: 100%; justify-content: center; }
+}
 </style>
 </head>
 <body>

@@ -78,6 +78,47 @@
 .details-list .val { color: var(--gold); font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; }
 
 .detail-images { display:grid; grid-template-columns:1fr 1fr; grid-template-rows: 240px 240px; gap: 12px; }
+
+/* ── ABOUT — Mobile overrides ── */
+@media (max-width: 900px) {
+  /* Badge overflow fix */
+  .ceo-portrait .badge { right: 0; top: 20px; font-size: 16px; padding: 10px 16px; }
+}
+
+@media (max-width: 767px) {
+  /* Hero */
+  .about-hero { padding: 96px 0 44px; }
+  .about-hero h1 { font-size: clamp(36px, 10vw, 72px); }
+  /* CEO portrait */
+  .ceo-portrait { height: 380px; }
+  .ceo-text h2 { font-size: clamp(28px, 7.5vw, 52px); }
+  .ceo-text p { font-size: 15px; margin-top: 16px; }
+  .ceo-quote { padding: 22px 20px; font-size: 18px; margin-top: 28px; }
+  /* Values */
+  .values-head { margin-bottom: 48px; }
+  .values-head h2 { font-size: clamp(28px, 7.5vw, 52px); }
+  .value { padding: 36px 20px 40px; }
+  .value h3 { font-size: 22px; }
+  /* Timeline */
+  .timeline-grid h2 { font-size: clamp(28px, 7.5vw, 52px); }
+  .tl-item { grid-template-columns: 64px 1fr; gap: 16px; padding: 24px 0; }
+  .tl-item .year { font-size: 22px; }
+  .tl-item h4 { font-size: 18px; }
+  /* Details */
+  .details-text h2 { font-size: clamp(36px, 9vw, 72px); }
+  .details-list li { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .details-list .label { font-size: 16px; }
+  .detail-images { grid-template-rows: 180px 180px; }
+}
+
+@media (max-width: 479px) {
+  .about-hero { padding: 80px 0 36px; }
+  .ceo-portrait { height: 300px; }
+  .values-grid { grid-template-columns: 1fr; }
+  .value { border-right: none; border-bottom: 1px solid var(--line); }
+  .value:last-child { border-bottom: none; }
+  .detail-images { grid-template-columns: 1fr; grid-template-rows: 200px 200px 200px 200px; }
+}
 </style>
 </head>
 <body>
@@ -188,7 +229,7 @@
   </div>
 </section>
 
-<section style="padding:140px 0; text-align:center;">
+<section class="page-cta-section">
   <div class="wrap reveal">
     <div class="section-tag" style="justify-content:center; display:inline-flex">Begin a conversation</div>
     <h2 style="margin-top:24px; font-size: clamp(40px, 6vw, 80px); line-height:1;">Tell us about <em style="color:var(--gold)">your moment.</em></h2>

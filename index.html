@@ -250,6 +250,89 @@
 .cta-banner p { color: #4a463d; max-width: 520px; margin: 28px auto 40px; font-family: var(--display); font-style: italic; font-size: 22px; }
 .cta-banner .btn-gold { background: var(--ink); color: var(--ivory); }
 .cta-banner .btn-gold:hover { background: var(--gold-deep); }
+
+/* ── HOME — Mobile overrides ─── max-width 900px ── */
+@media (max-width: 900px) {
+  /* Hero section */
+  .hero { padding: 110px 0 56px; }
+  /* Fix hero-mono: pull inside the container (was top/left -40px) */
+  .hero-mono { top: 12px; left: 12px; padding: 12px 16px; }
+  /* Fix service grid — remove right border in single-column layout */
+  .svc, .svc:nth-child(3n) { border-right: none; }
+  /* Fix why-grid 2×2 — item 2 still had a border-right hanging */
+  .why-cell:nth-child(2) { border-right: none; }
+  /* Fix svc-head margin */
+  .svc-head { margin-bottom: 40px; }
+}
+
+@media (max-width: 767px) {
+  /* ── Hero ── */
+  .hero { padding: 92px 0 48px; min-height: auto; }
+  .hero-left .lead { max-width: 100%; }
+  .hero-actions { flex-direction: column; gap: 10px; margin-top: 28px; }
+  .hero-actions .btn { width: 100%; justify-content: center; }
+  /* Simplified hero image grid */
+  .hero-right {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 180px 145px;
+    gap: 8px;
+  }
+  .hero-right .slot1 { grid-column: 1; grid-row: 1 / 3; }
+  .hero-right .slot2 { grid-column: 2; grid-row: 1; }
+  .hero-right .slot3 { grid-column: 2; grid-row: 2; }
+  .hero-right .slot4 { display: none; }
+  /* Smaller monogram on mobile */
+  .hero-mono { padding: 10px 14px; }
+  .hero-mono .monogram { gap: 8px; }
+  .hero-mono .monogram .mark { width: 64px; }
+  .hero-mono .monogram .top { font-size: 16px; }
+  .hero-mono .monogram .mid { font-size: 13px; }
+  /* Hero meta stats — wrap nicely */
+  .hero-meta { justify-content: flex-start; flex-wrap: wrap; gap: 12px 20px; align-items: flex-start; }
+  .hero-meta-wrap { margin-top: 28px; }
+  .hero-meta .item { font-size: 9px; letter-spacing: 0.18em; }
+  .hero-meta .item strong { font-size: 11px; margin-bottom: 2px; }
+  /* ── Intro ── */
+  .intro h2 { font-size: clamp(32px, 8.5vw, 56px); }
+  /* ── Services ── */
+  .svc { padding: 32px 20px 36px; gap: 16px; }
+  .svc h3 { font-size: 22px; }
+  /* ── Editorial ── */
+  .edi-image { height: 380px; }
+  .edi-stamp {
+    width: 140px; height: 140px; font-size: 14px; padding: 16px;
+    right: 0; bottom: -20px;
+  }
+  .edi-text h2 { font-size: clamp(32px, 8vw, 56px); }
+  .edi-pillar { grid-template-columns: 48px 1fr; gap: 14px; padding-top: 18px; }
+  /* ── Gallery teaser ── */
+  .gt-grid { grid-auto-rows: 160px; }
+  /* ── Testimonials ── */
+  .testi h2 { font-size: clamp(28px, 6.5vw, 48px); margin-bottom: 36px; }
+  .testi-card { padding: 28px 20px; gap: 18px; }
+  .testi-card blockquote { font-size: 17px; }
+  /* ── Why metrics ── */
+  .why-cell { padding: 40px 20px; gap: 12px; }
+  .why-cell .big { font-size: 52px; }
+  /* ── Social feed ── */
+  .feed-head { margin-bottom: 32px; }
+  /* ── CTA banner — !important overrides inline style="padding:120px 0" ── */
+  .cta-banner { padding: 72px 0 !important; }
+  .cta-banner .display { font-size: clamp(32px, 10.5vw, 64px); }
+  .cta-banner p { font-size: 18px; margin: 20px auto 28px; }
+}
+
+@media (max-width: 479px) {
+  /* ── Hero — hide image grid on very small phones ── */
+  .hero { padding: 80px 0 40px; }
+  .hero-right { display: none; }
+  /* ── Why — single column ── */
+  .why-grid { grid-template-columns: 1fr; }
+  .why-cell { border-right: none; border-bottom: 1px solid var(--line); padding: 32px 0; }
+  .why-cell:last-child { border-bottom: none; }
+  /* ── Services ── */
+  .svc { padding: 28px 16px 32px; }
+}
 </style>
 </head>
 <body>
