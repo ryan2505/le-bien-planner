@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Le Bien Planner Déco — Luxury event planning & design, Pennsylvania</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* ── HOME — bespoke ────────────────────── */
+.hero {
+  min-height: 100vh;
+  padding: 140px 0 80px;
+  display: flex; align-items: center;
+  position: relative; overflow: hidden;
+}
+.hero::after {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 110%, rgba(200,169,106,0.10), transparent 60%);
+  pointer-events: none;
+}
+.hero-grid {
+  display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 80px;
+  align-items: center; position: relative;
+}
+@media (max-width: 1000px) { .hero-grid { grid-template-columns: 1fr; gap: 48px; } }
+
+.hero-left .display { margin-top: 32px; }
+.hero-left .display .row { display: block; }
+.hero-left .display .ind { padding-left: 1.2em; }
+.hero-left .lead { margin-top: 36px; max-width: 480px; }
+.hero-actions { display: flex; gap: 18px; margin-top: 48px; flex-wrap: wrap; }
+
+.hero-right {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 220px 180px 140px;
+  gap: 12px;
+}
+.hero-right .slot1 { grid-row: 1 / 3; }
+.hero-right .slot2 { grid-row: 1; }
+.hero-right .slot3 { grid-row: 2 / 4; }
+.hero-right .slot4 { grid-row: 3; }
+@media (max-width: 1000px) {
+  .hero-right { grid-template-rows: 180px 160px 120px; }
+}
+
+.hero-mono {
+  position: absolute; top: -40px; left: -40px;
+  z-index: 3;
+  background: var(--ink);
+  padding: 18px 22px;
+  border: 1px solid var(--line-strong);
+}
+
+.hero-meta {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  display: flex; justify-content: space-between; align-items: flex-end;
+  padding-top: 28px; border-top: 1px solid var(--line);
+}
+.hero-meta .item { font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--ivory-mute); }
+.hero-meta .item strong { color: var(--gold); font-weight: 500; display: block; margin-bottom: 4px; }
+.hero-meta-wrap { position: relative; margin-top: 80px; }
+
+/* Section: Brand intro */
+.intro {
+  display: grid; grid-template-columns: 0.4fr 0.6fr; gap: 80px;
+  align-items: end;
+}
+@media (max-width: 900px) { .intro { grid-template-columns: 1fr; gap: 32px; } }
+.intro h2 {
+  font-size: clamp(40px, 5vw, 72px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.intro h2 em { color: var(--gold); }
+.intro .col p { font-size: 16px; line-height: 1.75; margin-bottom: 22px; }
+.intro .signoff {
+  margin-top: 28px;
+  font-family: var(--display); font-style: italic; font-size: 22px; color: var(--gold);
+}
+
+/* Services preview */
+.services-preview { padding-top: 0; }
+.svc-head {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 64px;
+  flex-wrap: wrap; gap: 24px;
+}
+.svc-head h2 { font-size: clamp(40px, 5vw, 64px); max-width: 700px; }
+.svc-head .right { max-width: 360px; }
+
+.svc-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--line-strong);
+}
+@media (max-width: 900px) { .svc-grid { grid-template-columns: 1fr; } }
+
+.svc {
+  padding: 48px 32px 56px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  display: flex; flex-direction: column; gap: 22px;
+  position: relative;
+  transition: background .35s;
+}
+.svc:nth-child(3n) { border-right: none; }
+.svc:hover { background: #0f0e0a; }
+.svc:hover .svc-arrow { color: var(--gold); transform: translateX(4px); }
+.svc .num { align-self: flex-start; }
+.svc h3 { font-size: 28px; font-family: var(--display); }
+.svc h3 em { font-style: italic; color: var(--gold); }
+.svc p { font-size: 14px; color: var(--ivory-dim); }
+.svc-arrow {
+  margin-top: auto;
+  font-family: var(--display); font-style: italic; font-size: 20px;
+  color: var(--ivory-mute);
+  transition: color .25s, transform .25s;
+}
+
+/* Editorial split */
+.editorial {
+  background: linear-gradient(180deg, var(--ink) 0%, #0e0d0a 100%);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.edi-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+  align-items: center;
+}
+@media (max-width: 900px) { .edi-grid { grid-template-columns: 1fr; } }
+.edi-image { position: relative; height: 640px; }
+.edi-stamp {
+  position: absolute; bottom: -40px; right: -40px;
+  width: 200px; height: 200px; border-radius: 50%;
+  background: var(--gold); color: var(--ink);
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; padding: 24px;
+  font-family: var(--display); font-style: italic; font-size: 18px; line-height: 1.2;
+  transform: rotate(-6deg);
+  z-index: 2;
+}
+.edi-stamp .small {
+  font-family: var(--sans); font-style: normal; font-size: 9px;
+  letter-spacing: 0.32em; text-transform: uppercase; margin-bottom: 6px;
+}
+.edi-text h2 { font-size: clamp(42px, 5vw, 64px); line-height: 1.05; }
+.edi-text h2 em { color: var(--gold); }
+.edi-text .lead { margin-top: 28px; }
+.edi-pillars { margin-top: 48px; display: grid; gap: 24px; }
+.edi-pillar { display: grid; grid-template-columns: 60px 1fr; gap: 18px; padding-top: 22px; border-top: 1px solid var(--line); }
+.edi-pillar .n { font-family: var(--display); font-style: italic; color: var(--gold); font-size: 20px; }
+.edi-pillar h4 { font-family: var(--display); font-size: 22px; margin-bottom: 6px; }
+.edi-pillar p { font-size: 14px; color: var(--ivory-dim); }
+
+/* Gallery teaser */
+.gallery-tease { padding-top: 60px; }
+.gt-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-bottom: 56px; gap: 24px; flex-wrap: wrap;
+}
+.gt-head h2 { font-size: clamp(40px, 5vw, 64px); max-width: 720px; }
+.gt-head .link { font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold); border-bottom: 1px solid var(--gold); padding-bottom: 6px; }
+
+.gt-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: 90px;
+  gap: 12px;
+}
+.gt-grid .g1 { grid-column: 1 / 7; grid-row: 1 / 5; }
+.gt-grid .g2 { grid-column: 7 / 10; grid-row: 1 / 4; }
+.gt-grid .g3 { grid-column: 10 / 13; grid-row: 1 / 3; }
+.gt-grid .g4 { grid-column: 10 / 13; grid-row: 3 / 6; }
+.gt-grid .g5 { grid-column: 7 / 10; grid-row: 4 / 7; }
+.gt-grid .g6 { grid-column: 1 / 5; grid-row: 5 / 8; }
+.gt-grid .g7 { grid-column: 5 / 7; grid-row: 5 / 8; }
+.gt-grid .g8 { grid-column: 10 / 13; grid-row: 6 / 8; }
+@media (max-width: 900px) {
+  .gt-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 200px; }
+  .gt-grid > * { grid-column: auto !important; grid-row: auto !important; }
+}
+
+/* Testimonials */
+.testi { background: #0c0b08; }
+.testi h2 { font-size: clamp(36px, 4vw, 56px); margin-bottom: 64px; max-width: 640px; }
+.testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+@media (max-width: 900px) { .testi-grid { grid-template-columns: 1fr; } }
+.testi-card {
+  padding: 40px 32px;
+  border: 1px solid var(--line);
+  background: var(--char);
+  display: flex; flex-direction: column; gap: 24px;
+  position: relative;
+}
+.testi-card .stars { color: var(--gold); letter-spacing: 4px; font-size: 14px; }
+.testi-card blockquote {
+  font-family: var(--display); font-style: italic; font-size: 20px;
+  line-height: 1.45; color: var(--ivory);
+}
+.testi-card cite {
+  font-style: normal; font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--gold); margin-top: auto;
+}
+.testi-card cite .name { color: var(--ivory); display: block; margin-bottom: 4px; font-size: 13px; font-family: var(--display); font-style: italic; letter-spacing: 0; text-transform: none; }
+
+/* Why */
+.why-grid {
+  display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 0;
+  border-top: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+}
+@media (max-width: 900px) { .why-grid { grid-template-columns: 1fr 1fr; } }
+.why-cell {
+  padding: 56px 32px;
+  border-right: 1px solid var(--line);
+  display: flex; flex-direction: column; gap: 16px;
+}
+.why-cell:last-child { border-right: none; }
+.why-cell .big {
+  font-family: var(--display); font-size: 64px; color: var(--gold);
+  letter-spacing: -0.02em; line-height: 1;
+}
+.why-cell .big em { font-style: italic; }
+.why-cell .lbl { font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--ivory-mute); }
+.why-cell p { font-size: 13px; color: var(--ivory-dim); }
+
+/* Social feed */
+.feed-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-bottom: 48px; flex-wrap: wrap; gap: 24px;
+}
+.feed-grid {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px;
+}
+@media (max-width: 900px) { .feed-grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* CTA banner */
+.cta-banner {
+  background: var(--ivory); color: var(--ink);
+  padding: 120px 0;
+  text-align: center;
+}
+.cta-banner .display { font-size: clamp(48px, 7vw, 110px); color: var(--ink); }
+.cta-banner .display em { color: var(--gold-deep); font-style: italic; }
+.cta-banner p { color: #4a463d; max-width: 520px; margin: 28px auto 40px; font-family: var(--display); font-style: italic; font-size: 22px; }
+.cta-banner .btn-gold { background: var(--ink); color: var(--ivory); }
+.cta-banner .btn-gold:hover { background: var(--gold-deep); }
+</style>
+</head>
+<body>
+<div id="nav-host" data-active="home"></div>
+
+<!-- HERO ─────────────────────────────────── -->
+<section class="hero" data-screen-label="01 Home — Hero">
+  <div class="grid-bg"></div>
+  <div class="wrap hero-grid">
+    <div class="hero-left reveal">
+      <div class="section-tag">Atelier — est. Pennsylvania</div>
+      <h1 class="display">
+        <span class="row">What you</span>
+        <span class="row"><em>celebrate</em> today</span>
+        <span class="row ind">becomes a</span>
+        <span class="row"><em>memory</em> forever.</span>
+      </h1>
+      <p class="lead">A maison of event planning and bespoke decoration — composing weddings, milestones, and corporate moments with editorial precision and quiet luxury.</p>
+      <div class="hero-actions">
+        <a href="booking.html" class="btn btn-gold">Book consultation <span class="arrow">→</span></a>
+        <a href="portfolio.html" class="btn btn-ghost">View portfolio</a>
+      </div>
+    </div>
+
+    <div class="hero-right reveal d2">
+      <div class="hero-mono">
+        <div class="monogram">
+          <img class="mark" src="img/logo-phoenix.png" alt="Le Bien phoenix mark">
+          <span class="word">
+            <span class="top">Le Bien</span>
+            <span class="mid">Planner</span>
+            <span class="rule"></span>
+            <span class="sub">Déco</span>
+          </span>
+        </div>
+      </div>
+      <image-slot id="home-hero-1" src="img/02-tablescape.svg" class="slot1" placeholder="Tablescape — ivory & gold dinner setting"></image-slot>
+      <image-slot id="home-hero-2" src="img/03-florals.svg" class="slot2" placeholder="Floral arrangement"></image-slot>
+      <image-slot id="home-hero-3" src="img/01-aisle.svg" class="slot3" placeholder="Ceremony aisle"></image-slot>
+      <image-slot id="home-hero-4" src="img/08-candle.svg" class="slot4" placeholder="Detail — candle, ring, ribbon"></image-slot>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="hero-meta-wrap hero-meta">
+      <div class="item"><strong>09 years</strong> in atelier practice</div>
+      <div class="item"><strong>240+</strong> events composed</div>
+      <div class="item"><strong>3 cities</strong> Pittsburgh · Philadelphia · NYC</div>
+      <div class="item"><strong>5 / 5</strong> client rating</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE ─────────────────────────────── -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Weddings <span class="dot"></span> Corporate <span class="dot"></span> Anniversaries <span class="dot"></span> Branding <span class="dot"></span> Styling <span class="dot"></span> Sourcing <span class="dot"></span> Couples Dance <span class="dot"></span></span>
+    <span>Weddings <span class="dot"></span> Corporate <span class="dot"></span> Anniversaries <span class="dot"></span> Branding <span class="dot"></span> Styling <span class="dot"></span> Sourcing <span class="dot"></span> Couples Dance <span class="dot"></span></span>
+  </div>
+</div>
+
+<!-- BRAND INTRO ─────────────────────────── -->
+<section data-screen-label="02 Home — Maison">
+  <div class="wrap">
+    <div class="intro">
+      <div class="col reveal">
+        <div class="section-tag">The maison</div>
+        <h2>An atelier for <em>moments<br>worth remembering.</em></h2>
+      </div>
+      <div class="col reveal d2">
+        <p>Le Bien Planner Déco is a full-service planning and decoration house, founded on the conviction that celebration is craft. We compose tablescapes, choreograph arrivals, and edit a hundred small details into one quiet, unforgettable atmosphere.</p>
+        <p>From a first cup of espresso to the last dance of the night — every project is led by one creative director, supported by a curated bench of florists, stationers, and culinary partners across Pennsylvania and beyond.</p>
+        <div class="signoff">— Mme Rosy, Creative Director</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES PREVIEW ────────────────────── -->
+<section class="services-preview" data-screen-label="03 Home — Services">
+  <div class="wrap">
+    <div class="svc-head">
+      <div class="reveal">
+        <div class="section-tag">Services — 01 / 07</div>
+        <h2 style="margin-top:24px">Seven disciplines, <em>one signature.</em></h2>
+      </div>
+      <p class="right reveal d2">Each service is offered à la carte or composed into a full event package — Bronze, Gold, or Platinum.</p>
+    </div>
+
+    <div class="svc-grid reveal">
+      <a class="svc" href="services.html">
+        <span class="num">— 01</span>
+        <h3>Wedding <em>planning</em></h3>
+        <p>Full creative direction from proposal to send-off. Venue scouting, design narrative, run-of-show, and the quiet things no one sees but everyone feels.</p>
+        <span class="svc-arrow">→ Discover</span>
+      </a>
+      <a class="svc" href="services.html">
+        <span class="num">— 02</span>
+        <h3>Social <em>events</em></h3>
+        <p>Anniversaries, birthdays, milestones. Concept, theme, décor and atmosphere — intimate dinners to ballroom receptions.</p>
+        <span class="svc-arrow">→ Discover</span>
+      </a>
+      <a class="svc" href="services.html">
+        <span class="num">— 03</span>
+        <h3>Corporate <em>events</em></h3>
+        <p>Brand-aligned conferences, launches, galas, and private hospitality. Décor and coordination at executive standard.</p>
+        <span class="svc-arrow">→ Discover</span>
+      </a>
+      <a class="svc" href="services.html">
+        <span class="num">— 04</span>
+        <h3>Styling &amp; <em>branding</em></h3>
+        <p>Identity, signage, stationery, place cards and welcome moments — composed to feel inevitable rather than designed.</p>
+        <span class="svc-arrow">→ Discover</span>
+      </a>
+      <a class="svc" href="services.html">
+        <span class="num">— 05</span>
+        <h3>Vendor <em>sourcing</em></h3>
+        <p>Florists, caterers, stationers, musicians. A vetted bench of partners curated over a decade in the industry.</p>
+        <span class="svc-arrow">→ Discover</span>
+      </a>
+      <a class="svc" href="services.html">
+        <span class="num">— 06</span>
+        <h3>Budget <em>management</em></h3>
+        <p>Quiet stewardship of every dollar — transparent accounting, vendor negotiation, and contingency design.</p>
+        <span class="svc-arrow">→ Discover</span>
+      </a>
+      <a class="svc" href="services.html" style="grid-column: span 1;">
+        <span class="num">— 07</span>
+        <h3>Couples <em>dance</em></h3>
+        <p>First-dance choreography. Six sessions with a private instructor in a quiet studio. A small surprise for guests.</p>
+        <span class="svc-arrow">→ Discover</span>
+      </a>
+      <div class="svc" style="background:#0c0b08; justify-content:center;">
+        <span class="num">— 00</span>
+        <h3 style="font-style:italic;color:var(--gold);">À la carte<br>or fully composed.</h3>
+        <p>Mix any of the disciplines, or invite us to lead the entire event end to end.</p>
+        <a href="services.html" class="svc-arrow" style="color:var(--gold)">→ See packages</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDITORIAL — Why ─────────────────────── -->
+<section class="editorial" data-screen-label="04 Home — Why">
+  <div class="wrap">
+    <div class="edi-grid">
+      <div class="edi-image reveal">
+        <image-slot id="home-edi-1" src="img/11-portrait.svg" placeholder="Editorial portrait — Mme Rosy in atelier" style="width:100%;height:100%;"></image-slot>
+        <div class="edi-stamp">
+          <div>
+            <div class="small">Since 2017</div>
+            <div>Quiet luxury,<br><em>loud emotion.</em></div>
+          </div>
+        </div>
+      </div>
+      <div class="edi-text reveal d2">
+        <div class="section-tag">Why Le Bien</div>
+        <h2 style="margin-top:24px">Luxury is in the <em>details</em> — and in everything you do <em>not</em> see.</h2>
+        <p class="lead">We believe an event should feel inevitable. The lighting just so. The flowers as if grown for that table. The timeline as if rehearsed for years.</p>
+
+        <div class="edi-pillars">
+          <div class="edi-pillar">
+            <span class="n">i.</span>
+            <div>
+              <h4>One creative director, every project</h4>
+              <p>You will not be passed from associate to associate. Rosy leads each event personally.</p>
+            </div>
+          </div>
+          <div class="edi-pillar">
+            <span class="n">ii.</span>
+            <div>
+              <h4>A curated bench, not a directory</h4>
+              <p>Our florists, caterers and stationers are partners, not vendors — chosen over years, briefed in full.</p>
+            </div>
+          </div>
+          <div class="edi-pillar">
+            <span class="n">iii.</span>
+            <div>
+              <h4>Quiet, on the day</h4>
+              <p>The work is loud in the weeks before. On the day itself, you should hear nothing but laughter and music.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY TEASE ───────────────────────── -->
+<section class="gallery-tease" data-screen-label="05 Home — Portfolio">
+  <div class="wrap">
+    <div class="gt-head">
+      <div class="reveal">
+        <div class="section-tag">Selected work — 2024 / 2025</div>
+        <h2 style="margin-top:24px">A folio of <em>recent celebrations.</em></h2>
+      </div>
+      <a href="portfolio.html" class="link reveal d2">All work →</a>
+    </div>
+
+    <div class="gt-grid reveal">
+      <image-slot id="gt1" src="img/06-ballroom.svg" class="g1" placeholder="Ceremony — ivory & black aisle"></image-slot>
+      <image-slot id="gt2" src="img/03-florals.svg" class="g2" placeholder="Floral arch"></image-slot>
+      <image-slot id="gt3" src="img/05-stationery.svg" class="g3" placeholder="Detail — calligraphy"></image-slot>
+      <image-slot id="gt4" src="img/02-tablescape.svg" class="g4" placeholder="Tablescape close-up"></image-slot>
+      <image-slot id="gt5" src="img/10-cake.svg" class="g5" placeholder="Cake moment"></image-slot>
+      <image-slot id="gt6" src="img/14-dressed.svg" class="g6" placeholder="Reception wide"></image-slot>
+      <image-slot id="gt7" src="img/07-couple.svg" class="g7" placeholder="Couple portrait"></image-slot>
+      <image-slot id="gt8" src="img/08-candle.svg" class="g8" placeholder="Send-off"></image-slot>
+    </div>
+  </div>
+</section>
+
+<!-- WHY METRICS ─────────────────────────── -->
+<section style="padding:0">
+  <div class="wrap">
+    <div class="why-grid">
+      <div class="why-cell">
+        <span class="big">240<em>+</em></span>
+        <span class="lbl">Events composed</span>
+        <p>Across weddings, milestone birthdays, corporate galas and intimate private dinners.</p>
+      </div>
+      <div class="why-cell">
+        <span class="big">98<em>%</em></span>
+        <span class="lbl">Repeat referral</span>
+        <p>Most new clients arrive by word of mouth, from a guest at a previous celebration.</p>
+      </div>
+      <div class="why-cell">
+        <span class="big">42</span>
+        <span class="lbl">Bench partners</span>
+        <p>A curated network of florists, calligraphers, caterers and musicians.</p>
+      </div>
+      <div class="why-cell">
+        <span class="big">09</span>
+        <span class="lbl">Years in practice</span>
+        <p>Founded in Pittsburgh, with active work in Philadelphia and New York.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS ────────────────────────── -->
+<section class="testi" data-screen-label="06 Home — Voices">
+  <div class="wrap">
+    <div class="section-tag reveal">Voices</div>
+    <h2 class="reveal" style="margin-top:24px">Kind words from the <em>guests of honour.</em></h2>
+
+    <div class="testi-grid">
+      <article class="testi-card reveal">
+        <div class="stars">★ ★ ★ ★ ★</div>
+        <blockquote>"We told Rosy we wanted ivory, gold and quiet. She gave us a wedding that felt like it had been planned for a decade. Guests are still writing to us."</blockquote>
+        <cite><span class="name">Sarah &amp; Daniel</span>Wedding · Sewickley Heights · June 2025</cite>
+      </article>
+      <article class="testi-card reveal d2">
+        <div class="stars">★ ★ ★ ★ ★</div>
+        <blockquote>"A gala for 380 people, executed with the discipline of a chamber concert. Le Bien is the only team I will hire for our annual."</blockquote>
+        <cite><span class="name">M. Okafor</span>Corporate · Pittsburgh · April 2025</cite>
+      </article>
+      <article class="testi-card reveal d3">
+        <div class="stars">★ ★ ★ ★ ★</div>
+        <blockquote>"My 50th was tender, beautiful and somehow exactly me. Rosy listens, and then she elevates. I cried at the entrance."</blockquote>
+        <cite><span class="name">A. Lévesque</span>Milestone birthday · Philadelphia · 2025</cite>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL FEED ─────────────────────────── -->
+<section data-screen-label="07 Home — Social">
+  <div class="wrap">
+    <div class="feed-head">
+      <div class="reveal">
+        <div class="section-tag">@lebienplannerdeco</div>
+        <h2 style="font-size:clamp(32px, 4vw, 48px); margin-top:24px">A diary of <em>moments, weekly.</em></h2>
+      </div>
+      <a href="#" class="link reveal d2" style="font-size:11px;letter-spacing:0.32em;text-transform:uppercase;color:var(--gold);border-bottom:1px solid var(--gold);padding-bottom:6px;">Follow on Instagram →</a>
+    </div>
+
+    <div class="feed-grid reveal">
+      <image-slot id="f1" src="img/15-birthday.svg" placeholder="@feed 01" style="aspect-ratio: 1 / 1; height:auto;"></image-slot>
+      <image-slot id="f2" src="img/08-candle.svg" placeholder="@feed 02" style="aspect-ratio: 1 / 1; height:auto;"></image-slot>
+      <image-slot id="f3" src="img/03-florals.svg" placeholder="@feed 03" style="aspect-ratio: 1 / 1; height:auto;"></image-slot>
+      <image-slot id="f4" src="img/10-cake.svg" placeholder="@feed 04" style="aspect-ratio: 1 / 1; height:auto;"></image-slot>
+      <image-slot id="f5" src="img/12-dance.svg" placeholder="@feed 05" style="aspect-ratio: 1 / 1; height:auto;"></image-slot>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER ──────────────────────────── -->
+<section class="cta-banner" data-screen-label="08 Home — CTA" style="padding:120px 0">
+  <div class="wrap">
+    <div class="section-tag reveal" style="color:var(--gold-deep); justify-content:center; display:inline-flex">Begin</div>
+    <h2 class="display reveal d2" style="margin-top:24px">Every detail <em>designed.</em><br>Every moment <em>elevated.</em></h2>
+    <p class="reveal d3">Bookings open four to eighteen months in advance. Let us begin with a quiet conversation.</p>
+    <div class="reveal d4">
+      <a href="booking.html" class="btn btn-gold">Book consultation <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<div id="footer-host"></div>
+
+<script src="image-slot.js"></script>
+<script src="partials.js"></script>
+</body>
+</html>

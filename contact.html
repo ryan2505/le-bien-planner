@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — Le Bien Planner Déco</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.ct-hero { padding: 200px 0 60px; }
+.ct-hero h1 { font-size: clamp(56px, 9vw, 130px); line-height: 0.95; letter-spacing: -0.025em; }
+.ct-hero h1 em { color: var(--gold); }
+
+.ct-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+  padding-bottom: 100px;
+}
+@media (max-width:900px){ .ct-grid { grid-template-columns: 1fr; gap: 48px; } }
+
+.ct-channels { display: flex; flex-direction: column; gap: 24px; }
+.ct-row {
+  display: grid; grid-template-columns: 80px 1fr auto;
+  align-items: center; gap: 32px;
+  padding: 28px 0;
+  border-top: 1px solid var(--line);
+  transition: padding-left .25s;
+}
+.ct-row:last-child { border-bottom: 1px solid var(--line); }
+.ct-row:hover { padding-left: 8px; }
+.ct-row .n { font-family: var(--display); font-style: italic; color: var(--gold); font-size: 18px; }
+.ct-row .body .lbl { font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--ivory-mute); }
+.ct-row .body .val { font-family: var(--display); font-size: 26px; margin-top: 6px; color: var(--ivory); }
+.ct-row .arrow { color: var(--gold); font-family: var(--display); font-style: italic; font-size: 22px; }
+
+.ct-side { padding: 48px; background: var(--char); border: 1px solid var(--line); }
+.ct-side h2 { font-family: var(--display); font-size: 36px; }
+.ct-side h2 em { color: var(--gold); }
+.ct-side .lead { margin-top: 18px; font-size: 17px; }
+
+.hours { margin-top: 32px; display: grid; grid-template-columns: 1fr auto; gap: 12px 24px; }
+.hours .day { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ivory-mute); padding: 10px 0; border-bottom: 1px solid var(--line); }
+.hours .time { font-family: var(--display); font-style: italic; color: var(--ivory); padding: 10px 0; border-bottom: 1px solid var(--line); text-align: right; }
+.hours .time.closed { color: var(--ivory-mute); }
+
+.location { background: #0c0b08; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.loc-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: stretch; }
+@media (max-width:900px){ .loc-grid { grid-template-columns: 1fr; } }
+.loc-text h2 { font-size: clamp(40px, 5vw, 64px); line-height: 1; }
+.loc-text h2 em { color: var(--gold); }
+.loc-text p { margin-top: 22px; font-size: 16px; line-height: 1.7; max-width: 420px; }
+.loc-text .addr {
+  margin-top: 40px;
+  padding: 24px 28px;
+  border-left: 2px solid var(--gold);
+  font-family: var(--display); font-style: italic; font-size: 22px; line-height: 1.45;
+}
+
+/* Custom 'map' — editorial line-art rendering instead of a copyrighted tile map */
+.map {
+  position: relative; height: 520px;
+  background:
+    radial-gradient(ellipse at center, rgba(200,169,106,0.10), transparent 70%),
+    #0a0907;
+  border: 1px solid var(--gold);
+  overflow: hidden;
+}
+.map svg { position:absolute; inset: 0; width: 100%; height: 100%; }
+.map .pin {
+  position: absolute; left: 56%; top: 44%;
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 0 6px rgba(200,169,106,0.20), 0 0 0 14px rgba(200,169,106,0.10);
+  animation: pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 6px rgba(200,169,106,0.20), 0 0 0 14px rgba(200,169,106,0.10); }
+  50% { box-shadow: 0 0 0 10px rgba(200,169,106,0.30), 0 0 0 22px rgba(200,169,106,0.15); }
+}
+.map .pin-label {
+  position: absolute; left: 56%; top: 44%;
+  transform: translate(28px, -50%);
+  font-family: var(--display); font-style: italic; color: var(--gold); font-size: 18px;
+  white-space: nowrap;
+}
+.map-tag {
+  position: absolute; bottom: 20px; left: 20px;
+  font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--ivory-mute);
+}
+.map-tag-right {
+  position: absolute; top: 20px; right: 20px;
+  font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold);
+  border: 1px solid var(--gold); padding: 6px 12px;
+}
+
+.social-band { padding: 80px 0; }
+.social-grid { display:grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+@media (max-width:900px){ .social-grid { grid-template-columns: 1fr 1fr; } }
+.social-card {
+  padding: 32px; border: 1px solid var(--line); background: var(--char);
+  display:flex; flex-direction: column; gap: 16px; transition: all .25s;
+}
+.social-card:hover { border-color: var(--gold); background: #14110a; }
+.social-card .ic { font-family: var(--display); font-style: italic; font-size: 32px; color: var(--gold); }
+.social-card h4 { font-family: var(--display); font-size: 22px; }
+.social-card p { font-size: 13px; color: var(--ivory-dim); }
+.social-card .handle { font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-top: auto; }
+</style>
+</head>
+<body>
+<div id="nav-host" data-active="contact"></div>
+
+<section class="ct-hero" data-screen-label="01 Contact — Hero">
+  <div class="grid-bg"></div>
+  <div class="wrap reveal">
+    <div class="section-tag">Contact the atelier</div>
+    <h1 style="margin-top:28px">Where <em>elegance</em><br>meets <em>celebration.</em></h1>
+    <p class="lead" style="margin-top:24px;max-width:600px">By telephone, in writing, or in person at the studio. Choose the channel that suits the conversation.</p>
+  </div>
+</section>
+
+<section style="padding-top:40px" data-screen-label="02 Contact — Channels">
+  <div class="wrap">
+    <div class="ct-grid">
+      <div class="ct-channels reveal">
+        <div class="section-tag">Direct channels</div>
+        <a class="ct-row" href="tel:+14125037799">
+          <span class="n">— 01</span>
+          <div class="body"><div class="lbl">Telephone · Infoline</div><div class="val">+1 412 503 7799</div></div>
+          <span class="arrow">→</span>
+        </a>
+        <a class="ct-row" href="https://wa.me/14125805809">
+          <span class="n">— 02</span>
+          <div class="body"><div class="lbl">WhatsApp</div><div class="val">+1 412 580 5809</div></div>
+          <span class="arrow">→</span>
+        </a>
+        <a class="ct-row" href="mailto:info@lebienplannerdeco.com">
+          <span class="n">— 03</span>
+          <div class="body"><div class="lbl">Email</div><div class="val">info@lebienplannerdeco.com</div></div>
+          <span class="arrow">→</span>
+        </a>
+        <a class="ct-row" href="https://lebienplannerdeco.com">
+          <span class="n">— 04</span>
+          <div class="body"><div class="lbl">Website</div><div class="val">lebienplannerdeco.com</div></div>
+          <span class="arrow">→</span>
+        </a>
+        <a class="ct-row" href="booking.html">
+          <span class="n">— 05</span>
+          <div class="body"><div class="lbl">Studio visit</div><div class="val">By appointment only</div></div>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+
+      <aside class="ct-side reveal d2">
+        <div class="section-tag">Studio hours</div>
+        <h2 style="margin-top:16px">A <em>quiet</em> way to begin.</h2>
+        <p class="lead">The studio receives clients by appointment only. The Pennsylvania atelier is open from Tuesday through Saturday.</p>
+
+        <div class="hours">
+          <div class="day">Monday</div><div class="time closed">By appointment</div>
+          <div class="day">Tuesday</div><div class="time">10 — 18h</div>
+          <div class="day">Wednesday</div><div class="time">10 — 18h</div>
+          <div class="day">Thursday</div><div class="time">10 — 19h</div>
+          <div class="day">Friday</div><div class="time">10 — 19h</div>
+          <div class="day">Saturday</div><div class="time">By appointment</div>
+          <div class="day">Sunday</div><div class="time closed">Closed</div>
+        </div>
+
+        <a href="booking.html" class="btn btn-gold" style="margin-top:32px">Schedule a visit <span class="arrow">→</span></a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="location" data-screen-label="03 Contact — Location">
+  <div class="wrap">
+    <div class="loc-grid">
+      <div class="loc-text reveal">
+        <div class="section-tag">The studio</div>
+        <h2 style="margin-top:24px">Fox Hill, <em>Pennsylvania.</em></h2>
+        <p>The atelier sits at the edge of Monroeville, a fifteen-minute drive from downtown Pittsburgh. Clients are received by appointment in a quiet, west-facing room.</p>
+        <div class="addr">
+          Le Bien Planner Déco<br>
+          1120 Fox Hill Dr<br>
+          Pennsylvania, 15146<br>
+          United States
+        </div>
+        <div style="margin-top:32px; display:flex; gap:12px; flex-wrap:wrap">
+          <a class="btn btn-ghost" href="https://maps.google.com/?q=1120+Fox+Hill+Dr+PA+15146">Open in Maps <span class="arrow">→</span></a>
+          <a class="btn btn-ghost" href="booking.html">Schedule a visit</a>
+        </div>
+      </div>
+
+      <div class="map reveal d2" aria-label="Map of Fox Hill, Pennsylvania">
+        <svg viewBox="0 0 600 520" preserveAspectRatio="none">
+          <!-- editorial road lines, original drawing -->
+          <g fill="none" stroke="rgba(200,169,106,0.18)" stroke-width="1">
+            <path d="M0,180 C140,160 260,260 420,200 L600,180"/>
+            <path d="M0,260 C160,300 260,200 380,300 L600,280"/>
+            <path d="M0,360 C140,330 280,400 420,340 L600,360"/>
+            <path d="M120,0 C140,140 80,260 160,400 L180,520"/>
+            <path d="M320,0 C300,120 360,260 320,400 L340,520"/>
+            <path d="M460,0 C480,140 420,300 480,440 L500,520"/>
+          </g>
+          <g fill="none" stroke="rgba(200,169,106,0.08)" stroke-width="0.5">
+            <path d="M0,60 L600,60"/><path d="M0,460 L600,460"/>
+            <path d="M60,0 L60,520"/><path d="M540,0 L540,520"/>
+          </g>
+          <!-- water -->
+          <g fill="rgba(200,169,106,0.04)">
+            <path d="M0,440 C140,460 320,420 500,460 L600,460 L600,520 L0,520 Z"/>
+          </g>
+        </svg>
+        <div class="pin"></div>
+        <div class="pin-label">— Le Bien atelier</div>
+        <div class="map-tag">Fox Hill Dr · Monroeville · PA 15146</div>
+        <div class="map-tag-right">40.4203° N, 79.7889° W</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="social-band" data-screen-label="04 Contact — Social">
+  <div class="wrap">
+    <div class="section-tag reveal">Stay close</div>
+    <h2 class="reveal" style="margin-top:24px; font-size: clamp(36px, 4vw, 56px); margin-bottom: 48px;">Follow the atelier <em style="color:var(--gold)">across the week.</em></h2>
+
+    <div class="social-grid reveal d2">
+      <a class="social-card" href="#">
+        <span class="ic">Ⓘ</span>
+        <h4>Instagram</h4>
+        <p>A daily diary of work in progress, partner moments and small details.</p>
+        <span class="handle">@lebienplannerdeco</span>
+      </a>
+      <a class="social-card" href="#">
+        <span class="ic">Ⓕ</span>
+        <h4>Facebook</h4>
+        <p>Long-form posts, recent celebrations, and reviews from past clients.</p>
+        <span class="handle">/lebienplannerdeco</span>
+      </a>
+      <a class="social-card" href="#">
+        <span class="ic">℗</span>
+        <h4>Pinterest</h4>
+        <p>Mood boards, palette studies and the references behind our compositions.</p>
+        <span class="handle">/lebienatelier</span>
+      </a>
+      <a class="social-card" href="mailto:info@lebienplannerdeco.com">
+        <span class="ic">✦</span>
+        <h4>Newsletter</h4>
+        <p>A monthly letter — one event, one essay, one favourite detail of the month.</p>
+        <span class="handle">Subscribe →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div id="footer-host"></div>
+<script src="image-slot.js"></script>
+<script src="partials.js"></script>
+</body>
+</html>

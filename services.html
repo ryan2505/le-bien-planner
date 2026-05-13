@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Services — Le Bien Planner Déco</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.svc-hero { padding: 200px 0 80px; }
+.svc-hero h1 { font-size: clamp(56px, 9vw, 130px); line-height: 0.95; letter-spacing: -0.025em; }
+.svc-hero h1 em { color: var(--gold); }
+.svc-hero .lead { max-width: 680px; margin-top: 32px; }
+
+.disciplines { padding-top: 40px; }
+.disc {
+  display: grid; grid-template-columns: 80px 1fr 1.1fr; gap: 60px;
+  padding: 80px 0; border-top: 1px solid var(--line);
+  align-items: center;
+}
+@media (max-width:900px){
+  .disc{ grid-template-columns:1fr; gap: 32px; padding: 60px 0; }
+}
+.disc:last-child { border-bottom: 1px solid var(--line); }
+.disc .num { font-family: var(--display); font-style: italic; font-size: 24px; color: var(--gold); }
+.disc-body h2 { font-family: var(--display); font-size: clamp(36px, 4vw, 56px); line-height: 1; }
+.disc-body h2 em { color: var(--gold); }
+.disc-body p { margin-top: 22px; font-size: 16px; line-height: 1.7; max-width: 520px; }
+.disc-body ul { margin-top: 24px; list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; }
+.disc-body ul li { font-size: 13px; color: var(--ivory-dim); padding-left: 16px; position: relative; }
+.disc-body ul li::before { content: "—"; position: absolute; left: 0; color: var(--gold); }
+.disc-image { position: relative; height: 360px; }
+
+.packages { background: #0c0b08; }
+.pack-head { display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; margin-bottom: 80px; }
+.pack-head h2 { font-size: clamp(40px, 5vw, 64px); max-width: 700px; }
+.pack-head h2 em { color: var(--gold); }
+.pack-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+@media (max-width:900px){ .pack-grid{ grid-template-columns:1fr; } }
+.pack {
+  background: var(--char); border: 1px solid var(--line);
+  padding: 48px 36px 40px;
+  display: flex; flex-direction: column; gap: 24px;
+  position: relative;
+  transition: transform .35s, border-color .35s;
+}
+.pack:hover { transform: translateY(-6px); border-color: var(--gold); }
+.pack.featured { border-color: var(--gold); background: linear-gradient(180deg, #14110a 0%, var(--char) 60%); }
+.pack .tier { font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--ivory-mute); }
+.pack.featured .tier { color: var(--gold); }
+.pack h3 { font-family: var(--display); font-size: 40px; }
+.pack .price { font-family: var(--display); font-style: italic; font-size: 22px; color: var(--gold); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 16px 0; }
+.pack .price .from { font-style: normal; font-family: var(--sans); font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--ivory-mute); display: block; margin-bottom: 4px; }
+.pack ul { list-style: none; display:flex; flex-direction: column; gap: 12px; flex-grow: 1; }
+.pack ul li { font-size: 13px; color: var(--ivory-dim); padding-left: 22px; position: relative; line-height: 1.45; }
+.pack ul li::before { content: "✦"; position: absolute; left: 0; top: 0; color: var(--gold); font-size: 10px; }
+.pack .btn { margin-top: 12px; justify-content:center; }
+.pack .ribbon {
+  position: absolute; top: -1px; right: -1px;
+  background: var(--gold); color: var(--ink);
+  font-size: 9px; letter-spacing: 0.32em; text-transform: uppercase;
+  padding: 8px 14px; font-weight: 500;
+}
+
+.process-head h2 { font-size: clamp(40px, 5vw, 64px); }
+.process-head h2 em { color: var(--gold); }
+.proc-grid { margin-top: 64px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+@media (max-width:900px){ .proc-grid{ grid-template-columns: 1fr 1fr; } }
+.proc {
+  padding: 32px 0; border-top: 1px solid var(--gold);
+  position: relative;
+}
+.proc .step { font-family: var(--display); font-style: italic; color: var(--gold); font-size: 18px; margin-bottom: 16px; }
+.proc h4 { font-family: var(--display); font-size: 22px; margin-bottom: 12px; }
+.proc p { font-size: 13px; color: var(--ivory-dim); line-height: 1.6; }
+</style>
+</head>
+<body>
+<div id="nav-host" data-active="services"></div>
+
+<section class="svc-hero" data-screen-label="01 Services — Hero">
+  <div class="grid-bg"></div>
+  <div class="wrap reveal">
+    <div class="section-tag">Services — seven disciplines</div>
+    <h1 style="margin-top:28px">An atelier of <em>celebration,</em><br>composed end to end.</h1>
+    <p class="lead">Each discipline available on its own, or composed into a full event package — Bronze, Gold, or Platinum.</p>
+  </div>
+</section>
+
+<section class="disciplines" data-screen-label="02 Services — Disciplines">
+  <div class="wrap">
+    <div class="disc reveal">
+      <span class="num">— 01</span>
+      <div class="disc-body">
+        <h2>Wedding <em>planning</em></h2>
+        <p>Full creative direction, from engagement to send-off. We compose the design narrative, scout the venue, build the timeline, and lead the day itself.</p>
+        <ul>
+          <li>Creative direction</li><li>Venue scouting</li>
+          <li>Design narrative</li><li>Run-of-show</li>
+          <li>Day-of coordination</li><li>Rehearsal direction</li>
+        </ul>
+      </div>
+      <div class="disc-image"><image-slot id="sv1" src="img/01-aisle.svg" placeholder="Wedding aisle — ivory & gold" style="width:100%;height:100%;"></image-slot></div>
+    </div>
+
+    <div class="disc reveal">
+      <span class="num">— 02</span>
+      <div class="disc-body">
+        <h2>Social <em>events</em></h2>
+        <p>Anniversaries, milestone birthdays, baby showers, private dinners. From intimate eight-seat tables to ballroom receptions for three hundred.</p>
+        <ul>
+          <li>Concept &amp; theme</li><li>Décor &amp; atmosphere</li>
+          <li>Guest experience</li><li>Stationery</li>
+          <li>Catering coordination</li><li>Entertainment</li>
+        </ul>
+      </div>
+      <div class="disc-image"><image-slot id="sv2" src="img/02-tablescape.svg" placeholder="Anniversary tablescape" style="width:100%;height:100%;"></image-slot></div>
+    </div>
+
+    <div class="disc reveal">
+      <span class="num">— 03</span>
+      <div class="disc-body">
+        <h2>Corporate <em>events</em></h2>
+        <p>Brand-aligned conferences, product launches, galas and private hospitality — executed at the standard your executive team and clients expect.</p>
+        <ul>
+          <li>Gala dinners</li><li>Product launches</li>
+          <li>Conferences</li><li>Brand activations</li>
+          <li>VIP hospitality</li><li>Holiday parties</li>
+        </ul>
+      </div>
+      <div class="disc-image"><image-slot id="sv3" src="img/04-stage.svg" placeholder="Corporate gala stage" style="width:100%;height:100%;"></image-slot></div>
+    </div>
+
+    <div class="disc reveal">
+      <span class="num">— 04</span>
+      <div class="disc-body">
+        <h2>Styling &amp; <em>branding</em></h2>
+        <p>The visual signature of your event — identity, signage, stationery, place cards, menu design, and welcome moments. Composed to feel inevitable.</p>
+        <ul>
+          <li>Event identity</li><li>Stationery suite</li>
+          <li>Signage system</li><li>Welcome moments</li>
+          <li>Menu &amp; place cards</li><li>Favor design</li>
+        </ul>
+      </div>
+      <div class="disc-image"><image-slot id="sv4" src="img/05-stationery.svg" placeholder="Stationery flat-lay" style="width:100%;height:100%;"></image-slot></div>
+    </div>
+
+    <div class="disc reveal">
+      <span class="num">— 05</span>
+      <div class="disc-body">
+        <h2>Vendor <em>sourcing</em></h2>
+        <p>A vetted bench of florists, caterers, photographers, musicians and stationers — partners curated over nearly a decade in practice.</p>
+        <ul>
+          <li>Florists &amp; designers</li><li>Catering &amp; sommeliers</li>
+          <li>Photographers</li><li>Musicians &amp; DJs</li>
+          <li>Stationers</li><li>Officiants</li>
+        </ul>
+      </div>
+      <div class="disc-image"><image-slot id="sv5" src="img/03-florals.svg" placeholder="Floral atelier" style="width:100%;height:100%;"></image-slot></div>
+    </div>
+
+    <div class="disc reveal">
+      <span class="num">— 06</span>
+      <div class="disc-body">
+        <h2>Budget <em>management</em></h2>
+        <p>Transparent accounting, vendor negotiation, and contingency design. We treat your budget the way we treat the table linens — with quiet discipline.</p>
+        <ul>
+          <li>Budget composition</li><li>Vendor negotiation</li>
+          <li>Payment scheduling</li><li>Contingency planning</li>
+          <li>Live reporting</li><li>Final reconciliation</li>
+        </ul>
+      </div>
+      <div class="disc-image"><image-slot id="sv6" src="img/05-stationery.svg" placeholder="Ledger / planning detail" style="width:100%;height:100%;"></image-slot></div>
+    </div>
+
+    <div class="disc reveal">
+      <span class="num">— 07</span>
+      <div class="disc-body">
+        <h2>Couples <em>dance</em></h2>
+        <p>Six private sessions in our studio — choreography for the first dance, gentle to the unpracticed, beautiful for the room. A small surprise for guests.</p>
+        <ul>
+          <li>Six private lessons</li><li>Song selection</li>
+          <li>Custom choreography</li><li>Studio rehearsal</li>
+          <li>Optional film</li><li>Day-of warm-up</li>
+        </ul>
+      </div>
+      <div class="disc-image"><image-slot id="sv7" src="img/12-dance.svg" placeholder="Dance studio — couple silhouette" style="width:100%;height:100%;"></image-slot></div>
+    </div>
+  </div>
+</section>
+
+<section class="packages" data-screen-label="03 Services — Packages">
+  <div class="wrap">
+    <div class="pack-head reveal">
+      <div>
+        <div class="section-tag">Composed packages</div>
+        <h2 style="margin-top:24px">Three tiers, <em>infinite editing.</em></h2>
+      </div>
+      <p style="max-width:380px">Every package is a starting point. We tailor the included scope and add to it as your event takes shape.</p>
+    </div>
+
+    <div class="pack-grid">
+      <article class="pack reveal">
+        <span class="tier">Bronze</span>
+        <h3>Month-of <em>coordination</em></h3>
+        <div class="price"><span class="from">Starting from</span>$4,800</div>
+        <ul>
+          <li>Six-week pre-event lead-in</li>
+          <li>Vendor coordination &amp; communication</li>
+          <li>Final timeline &amp; run-of-show</li>
+          <li>Rehearsal direction</li>
+          <li>Day-of lead planner + one assistant</li>
+          <li>Day-after vendor reconciliation</li>
+        </ul>
+        <a href="booking.html" class="btn btn-ghost">Enquire <span class="arrow">→</span></a>
+      </article>
+
+      <article class="pack featured reveal d2">
+        <span class="ribbon">Signature</span>
+        <span class="tier">Gold</span>
+        <h3>Full <em>planning &amp; design</em></h3>
+        <div class="price"><span class="from">Starting from</span>$14,500</div>
+        <ul>
+          <li>Twelve-month creative direction</li>
+          <li>Design narrative &amp; visual signature</li>
+          <li>Venue scouting &amp; styling</li>
+          <li>Full vendor sourcing &amp; management</li>
+          <li>Stationery &amp; signage</li>
+          <li>Budget composition &amp; live reporting</li>
+          <li>Lead planner + three assistants on the day</li>
+        </ul>
+        <a href="booking.html" class="btn btn-gold">Begin with Gold <span class="arrow">→</span></a>
+      </article>
+
+      <article class="pack reveal d3">
+        <span class="tier">Platinum</span>
+        <h3>Atelier <em>composition</em></h3>
+        <div class="price"><span class="from">Starting from</span>$32,000</div>
+        <ul>
+          <li>Eighteen-month bespoke creative direction</li>
+          <li>Custom event identity &amp; branding</li>
+          <li>Multi-day programming (welcome → brunch)</li>
+          <li>Private travel &amp; guest concierge</li>
+          <li>On-set photographer &amp; film</li>
+          <li>Couples dance package included</li>
+          <li>Full atelier on the day — Rosy on site</li>
+        </ul>
+        <a href="booking.html" class="btn btn-ghost">Discuss Platinum <span class="arrow">→</span></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="04 Services — Process">
+  <div class="wrap">
+    <div class="process-head reveal">
+      <div class="section-tag">The process</div>
+      <h2 style="margin-top:24px">Six steps, from <em>conversation</em> to <em>celebration.</em></h2>
+    </div>
+
+    <div class="proc-grid reveal">
+      <div class="proc">
+        <div class="step">— Step 01</div>
+        <h4>Quiet conversation</h4>
+        <p>A first call or studio visit. We listen — to the story, the guest list, and the things you have not yet put into words.</p>
+      </div>
+      <div class="proc">
+        <div class="step">— Step 02</div>
+        <h4>The brief</h4>
+        <p>A short editorial document — the narrative, the palette, the rhythm. The thing we will design against.</p>
+      </div>
+      <div class="proc">
+        <div class="step">— Step 03</div>
+        <h4>Atelier proposal</h4>
+        <p>Venues, partners, design directions and a transparent budget — composed into one bound proposal.</p>
+      </div>
+      <div class="proc">
+        <div class="step">— Step 04</div>
+        <h4>Composition</h4>
+        <p>Months of quiet work. Sourcing, sampling, tasting, fitting, refining. You see what matters; we hold the rest.</p>
+      </div>
+      <div class="proc">
+        <div class="step">— Step 05</div>
+        <h4>Rehearsal</h4>
+        <p>The week before. Walk-throughs, dress rehearsal, room set, lighting cues. Nothing left to the day.</p>
+      </div>
+      <div class="proc">
+        <div class="step">— Step 06</div>
+        <h4>The day</h4>
+        <p>We are present, we are quiet, and we are everywhere. You spend the day with each other.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer-host"></div>
+<script src="image-slot.js"></script>
+<script src="partials.js"></script>
+</body>
+</html>

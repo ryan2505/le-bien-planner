@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfolio — Le Bien Planner Déco</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.pf-hero { padding: 200px 0 60px; }
+.pf-hero h1 { font-size: clamp(56px, 9vw, 130px); line-height: 0.95; letter-spacing: -0.025em; }
+.pf-hero h1 em { color: var(--gold); }
+.pf-hero-row { display:flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 24px; margin-top: 40px; }
+
+.filters { display: flex; gap: 8px; flex-wrap: wrap; }
+.filter-btn {
+  font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase;
+  padding: 10px 18px; background: transparent; color: var(--ivory-dim);
+  border: 1px solid var(--line-strong); cursor: pointer; transition: all .25s;
+  font-family: var(--sans);
+}
+.filter-btn.on, .filter-btn:hover { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+
+.case {
+  padding: 120px 0; border-top: 1px solid var(--line);
+}
+.case-head { display:flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; margin-bottom: 56px; }
+.case-head h2 { font-family: var(--display); font-size: clamp(40px, 5vw, 72px); line-height: 1; letter-spacing: -0.02em; }
+.case-head h2 em { color: var(--gold); }
+.case-meta { text-align: right; font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--ivory-mute); }
+.case-meta .v { color: var(--gold); display:block; font-family: var(--display); font-style: italic; font-size: 18px; letter-spacing: 0; text-transform: none; margin-bottom: 4px; }
+
+.case-1-grid {
+  display: grid; grid-template-columns: 1.4fr 1fr; gap: 16px;
+  grid-template-rows: 280px 280px 280px;
+}
+.case-1-grid .a { grid-row: 1 / 4; }
+.case-1-grid .b, .case-1-grid .c, .case-1-grid .d { grid-row: span 1; }
+@media (max-width:900px){
+  .case-1-grid { grid-template-columns: 1fr; grid-template-rows: repeat(4, 240px); }
+  .case-1-grid > * { grid-row: auto !important; }
+}
+
+.case-2-grid {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px;
+  grid-template-rows: 240px 320px;
+}
+.case-2-grid .a { grid-column: 1 / 3; grid-row: 1 / 3; }
+.case-2-grid .b { grid-column: 3; grid-row: 1; }
+.case-2-grid .c { grid-column: 3; grid-row: 2; }
+@media (max-width:900px){
+  .case-2-grid { grid-template-columns: 1fr; grid-template-rows: repeat(3, 240px); }
+  .case-2-grid > * { grid-column: auto !important; grid-row: auto !important; }
+}
+
+.case-3-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+  grid-template-rows: 220px 300px;
+}
+.case-3-grid .a { grid-column: 1 / 3; grid-row: 1; }
+.case-3-grid .b { grid-column: 3 / 5; grid-row: 1; }
+.case-3-grid .c { grid-column: 1 / 2; grid-row: 2; }
+.case-3-grid .d { grid-column: 2 / 4; grid-row: 2; }
+.case-3-grid .e { grid-column: 4 / 5; grid-row: 2; }
+@media (max-width:900px){
+  .case-3-grid { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, 200px); }
+  .case-3-grid > * { grid-column: auto !important; grid-row: auto !important; }
+}
+
+.case-note {
+  margin-top: 32px;
+  display:grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 32px;
+  padding-top: 32px; border-top: 1px solid var(--line);
+}
+@media (max-width:900px){ .case-note { grid-template-columns: 1fr 1fr; } }
+.case-note .k { font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--ivory-mute); margin-bottom: 6px; }
+.case-note .v2 { font-family: var(--display); font-size: 18px; color: var(--ivory); font-style: italic; }
+
+.before-after {
+  background: #0c0b08; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+}
+.ba-head h2 { font-size: clamp(40px, 5vw, 64px); }
+.ba-head h2 em { color: var(--gold); }
+.ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 56px; }
+@media (max-width:900px){ .ba-grid{ grid-template-columns:1fr; } }
+.ba-card { position: relative; height: 480px; }
+.ba-card .tag {
+  position: absolute; top: 16px; left: 16px;
+  background: var(--ink); color: var(--gold);
+  font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase;
+  padding: 8px 14px; z-index: 3;
+}
+
+.press { padding: 120px 0; text-align:center; }
+.press h2 { font-size: clamp(32px, 4vw, 48px); }
+.press-row {
+  margin-top: 56px; display:flex; justify-content: center; flex-wrap: wrap; gap: 48px 80px;
+  font-family: var(--display); font-style: italic; font-size: 28px; color: var(--ivory-dim);
+}
+.press-row span { letter-spacing: 0.02em; }
+</style>
+</head>
+<body>
+<div id="nav-host" data-active="portfolio"></div>
+
+<section class="pf-hero" data-screen-label="01 Portfolio — Hero">
+  <div class="grid-bg"></div>
+  <div class="wrap reveal">
+    <div class="section-tag">Selected work — 2023 / 2025</div>
+    <h1 style="margin-top:28px">A <em>folio</em> of recent <em>compositions.</em></h1>
+    <div class="pf-hero-row">
+      <p class="lead" style="max-width:520px;margin:0">Twenty-four hand-selected projects, across wedding, social, and corporate practice. Filter by discipline below, or scroll for the full edit.</p>
+      <div class="filters">
+        <button class="filter-btn on">All</button>
+        <button class="filter-btn">Weddings</button>
+        <button class="filter-btn">Birthdays</button>
+        <button class="filter-btn">Corporate</button>
+        <button class="filter-btn">Décor</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="02 Portfolio — Case 01">
+  <div class="wrap">
+    <article class="case">
+      <div class="case-head reveal">
+        <div>
+          <div class="section-tag">Case — 01 / Wedding</div>
+          <h2 style="margin-top:24px"><em>Sarah &amp; Daniel.</em><br>An ivory ceremony in Sewickley.</h2>
+        </div>
+        <div class="case-meta">
+          <span class="v">June 2025</span>
+          <div>180 guests · Sewickley Heights · Pennsylvania</div>
+        </div>
+      </div>
+
+      <div class="case-1-grid reveal d2">
+        <image-slot id="pf-01-a" src="img/01-aisle.svg" class="a" placeholder="Aisle wide — ivory & gold ceremony" style="width:100%;height:100%;"></image-slot>
+        <image-slot id="pf-01-b" src="img/02-tablescape.svg" class="b" placeholder="Tablescape" style="width:100%;height:100%;"></image-slot>
+        <image-slot id="pf-01-c" src="img/07-couple.svg" class="c" placeholder="Couple portrait" style="width:100%;height:100%;"></image-slot>
+        <image-slot id="pf-01-d" src="img/05-stationery.svg" class="d" placeholder="Detail — calligraphy" style="width:100%;height:100%;"></image-slot>
+      </div>
+
+      <div class="case-note">
+        <div><div class="k">Discipline</div><div class="v2">Full planning &amp; design</div></div>
+        <div><div class="k">Palette</div><div class="v2">Ivory, gold, antique rose</div></div>
+        <div><div class="k">Florals</div><div class="v2">Garden roses, ranunculus</div></div>
+        <div><div class="k">Package</div><div class="v2">Platinum</div></div>
+      </div>
+    </article>
+
+    <article class="case">
+      <div class="case-head reveal">
+        <div>
+          <div class="section-tag">Case — 02 / Birthday</div>
+          <h2 style="margin-top:24px"><em>Adélaïde, 50.</em><br>A garden anniversary in rose.</h2>
+        </div>
+        <div class="case-meta">
+          <span class="v">August 2025</span>
+          <div>92 guests · Private estate · Philadelphia</div>
+        </div>
+      </div>
+
+      <div class="case-2-grid reveal d2">
+        <image-slot id="pf-02-a" src="img/09-garden.svg" class="a" placeholder="Garden tablescape wide" style="width:100%;height:100%;"></image-slot>
+        <image-slot id="pf-02-b" src="img/03-florals.svg" class="b" placeholder="Floral close-up" style="width:100%;height:100%;"></image-slot>
+        <image-slot id="pf-02-c" src="img/10-cake.svg" class="c" placeholder="Cake moment" style="width:100%;height:100%;"></image-slot>
+      </div>
+
+      <div class="case-note">
+        <div><div class="k">Discipline</div><div class="v2">Social event composition</div></div>
+        <div><div class="k">Palette</div><div class="v2">Powdered rose, ivory</div></div>
+        <div><div class="k">Music</div><div class="v2">Quartet &amp; piano</div></div>
+        <div><div class="k">Package</div><div class="v2">Gold</div></div>
+      </div>
+    </article>
+
+    <article class="case">
+      <div class="case-head reveal">
+        <div>
+          <div class="section-tag">Case — 03 / Corporate</div>
+          <h2 style="margin-top:24px"><em>The Allegheny Gala.</em><br>A black-tie evening for 380.</h2>
+        </div>
+        <div class="case-meta">
+          <span class="v">April 2025</span>
+          <div>380 guests · The Carnegie · Pittsburgh</div>
+        </div>
+      </div>
+
+      <div class="case-3-grid reveal d2">
+        <image-slot id="pf-03-a" src="img/04-stage.svg" class="a" placeholder="Stage architecture" style="width:100%;height:100%;"></image-slot>
+        <image-slot id="pf-03-b" src="img/06-ballroom.svg" class="b" placeholder="Reception ballroom" style="width:100%;height:100%;"></image-slot>
+        <image-slot id="pf-03-c" src="img/05-stationery.svg" class="c" placeholder="Place setting" style="width:100%;height:100%;"></image-slot>
+        <image-slot id="pf-03-d" src="img/04-stage.svg" class="d" placeholder="Performance moment" style="width:100%;height:100%;"></image-slot>
+        <image-slot id="pf-03-e" src="img/08-candle.svg" class="e" placeholder="Welcome detail" style="width:100%;height:100%;"></image-slot>
+      </div>
+
+      <div class="case-note">
+        <div><div class="k">Discipline</div><div class="v2">Corporate gala direction</div></div>
+        <div><div class="k">Palette</div><div class="v2">Onyx, gold, navy</div></div>
+        <div><div class="k">Programme</div><div class="v2">Five-hour evening</div></div>
+        <div><div class="k">Package</div><div class="v2">Custom atelier</div></div>
+      </div>
+    </article>
+
+    <article class="case">
+      <div class="case-head reveal">
+        <div>
+          <div class="section-tag">Case — 04 / Wedding</div>
+          <h2 style="margin-top:24px"><em>J &amp; T —</em> 'til death do us part.</h2>
+        </div>
+        <div class="case-meta">
+          <span class="v">September 2024</span>
+          <div>140 guests · Mount Lebanon · Pennsylvania</div>
+        </div>
+      </div>
+
+      <div class="case-1-grid reveal d2">
+        <image-slot id="pf-04-a" src="img/16-wedding-2.svg" class="a" placeholder="Black & white ceremony backdrop" style="width:100%;height:100%;"></image-slot>
+        <image-slot id="pf-04-b" src="img/14-dressed.svg" class="b" placeholder="Bride &amp; groom chair décor" style="width:100%;height:100%;"></image-slot>
+        <image-slot id="pf-04-c" src="img/03-florals.svg" class="c" placeholder="Floral arch detail" style="width:100%;height:100%;"></image-slot>
+        <image-slot id="pf-04-d" src="img/07-couple.svg" class="d" placeholder="First dance" style="width:100%;height:100%;"></image-slot>
+      </div>
+
+      <div class="case-note">
+        <div><div class="k">Discipline</div><div class="v2">Full planning &amp; design</div></div>
+        <div><div class="k">Palette</div><div class="v2">Onyx, ivory, white florals</div></div>
+        <div><div class="k">Florals</div><div class="v2">White peony, calla lily</div></div>
+        <div><div class="k">Package</div><div class="v2">Gold</div></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="before-after" data-screen-label="03 Portfolio — Transformations">
+  <div class="wrap">
+    <div class="ba-head reveal">
+      <div class="section-tag">Transformations</div>
+      <h2 style="margin-top:24px">A blank room is a <em>question.</em><br>We answer in linen and light.</h2>
+    </div>
+
+    <div class="ba-grid reveal d2">
+      <div class="ba-card">
+        <span class="tag">Before</span>
+        <image-slot id="ba-1a" src="img/13-empty.svg" placeholder="Empty ballroom — neutral, fluorescent" style="width:100%;height:100%;"></image-slot>
+      </div>
+      <div class="ba-card">
+        <span class="tag" style="color:var(--ink);background:var(--gold);">After</span>
+        <image-slot id="ba-1b" src="img/14-dressed.svg" placeholder="Same ballroom — dressed, lit, set" style="width:100%;height:100%;"></image-slot>
+      </div>
+    </div>
+
+    <div class="ba-grid reveal d3">
+      <div class="ba-card">
+        <span class="tag">Before</span>
+        <image-slot id="ba-2a" src="img/13-empty.svg" placeholder="Empty garden marquee" style="width:100%;height:100%;"></image-slot>
+      </div>
+      <div class="ba-card">
+        <span class="tag" style="color:var(--ink);background:var(--gold);">After</span>
+        <image-slot id="ba-2b" src="img/09-garden.svg" placeholder="Same marquee — composed reception" style="width:100%;height:100%;"></image-slot>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="press">
+  <div class="wrap reveal">
+    <div class="section-tag" style="justify-content:center; display:inline-flex">As seen in</div>
+    <h2 style="margin-top:24px">Featured in regional &amp; <em>national</em> press.</h2>
+    <div class="press-row">
+      <span>Pittsburgh Magazine</span>
+      <span>Style Me Pretty</span>
+      <span>Brides PA</span>
+      <span>Whitewed Directory</span>
+      <span>Vogue Weddings</span>
+      <span>Carats &amp; Cake</span>
+    </div>
+  </div>
+</section>
+
+<section style="padding:140px 0; text-align:center; background:#0c0b08; border-top:1px solid var(--line);">
+  <div class="wrap reveal">
+    <div class="section-tag" style="justify-content:center; display:inline-flex">Begin yours</div>
+    <h2 style="margin-top:24px; font-size: clamp(40px, 6vw, 80px); line-height:1;">Your event, <em style="color:var(--gold)">in this folio</em><br>twelve months from now.</h2>
+    <div style="margin-top:40px">
+      <a href="booking.html" class="btn btn-gold">Book consultation <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<div id="footer-host"></div>
+<script src="image-slot.js"></script>
+<script src="partials.js"></script>
+<script>
+document.querySelectorAll('.filter-btn').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('.filter-btn').forEach(x => x.classList.remove('on'));
+  b.classList.add('on');
+}));
+</script>
+</body>
+</html>

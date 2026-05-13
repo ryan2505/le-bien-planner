@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About — Le Bien Planner Déco</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.about-hero { padding: 200px 0 80px; }
+.about-hero h1 { font-size: clamp(56px, 9vw, 130px); line-height: 0.95; letter-spacing: -0.025em; }
+.about-hero h1 em { color: var(--gold); }
+.about-hero .lead { max-width: 640px; margin-top: 32px; }
+
+.ceo-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 80px; align-items: center; }
+@media (max-width:900px){ .ceo-grid{grid-template-columns:1fr; gap:40px;} }
+.ceo-portrait { height: 720px; position: relative; }
+.ceo-portrait .badge {
+  position: absolute; right: -20px; top: 32px;
+  background: var(--ink); color: var(--gold);
+  font-family: var(--display); font-style: italic; font-size: 18px;
+  padding: 14px 22px; border: 1px solid var(--gold);
+}
+.ceo-text .section-tag { margin-bottom: 28px; }
+.ceo-text h2 { font-size: clamp(40px, 5vw, 72px); line-height: 1.02; }
+.ceo-text h2 em { color: var(--gold); }
+.ceo-text p { margin-top: 22px; font-size: 16px; line-height: 1.75; }
+.ceo-quote {
+  margin-top: 40px; padding: 32px 36px;
+  border-left: 1px solid var(--gold); background: #0e0d0a;
+  font-family: var(--display); font-style: italic; font-size: 22px; line-height: 1.45;
+  color: var(--ivory);
+}
+
+.values { background: #0c0b08; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.values-head { display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:24px; margin-bottom: 80px; }
+.values-head h2 { font-size: clamp(40px, 5vw, 64px); max-width: 720px; }
+.values-head h2 em { color: var(--gold); }
+.values-grid { display: grid; grid-template-columns: repeat(3,1fr); gap:0; border-top:1px solid var(--line-strong); }
+@media (max-width:900px){ .values-grid{ grid-template-columns:1fr; } }
+.value {
+  padding: 48px 32px 56px; border-right: 1px solid var(--line);
+  display:flex; flex-direction: column; gap: 18px;
+}
+.value:last-child { border-right: none; }
+.value .num { font-size: 13px; }
+.value h3 { font-family: var(--display); font-size: 26px; }
+.value h3 em { color: var(--gold); }
+.value p { font-size: 14px; line-height: 1.7; }
+
+.timeline-grid { display: grid; grid-template-columns: 0.4fr 0.6fr; gap: 80px; }
+@media (max-width:900px){ .timeline-grid { grid-template-columns:1fr; } }
+.timeline-grid h2 { font-size: clamp(40px,5vw,64px); line-height:1; }
+.timeline-grid h2 em { color: var(--gold); }
+.tl { display:flex; flex-direction:column; }
+.tl-item { display:grid; grid-template-columns: 100px 1fr; gap: 32px; padding: 32px 0; border-top: 1px solid var(--line); }
+.tl-item .year { font-family: var(--display); font-style: italic; color: var(--gold); font-size: 28px; }
+.tl-item h4 { font-family: var(--display); font-size: 22px; margin-bottom: 8px; }
+.tl-item p { font-size: 14px; }
+
+.details-section { background: linear-gradient(180deg, var(--ink), #0c0b08); }
+.details-grid {
+  display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: center;
+}
+@media (max-width:900px){ .details-grid{ grid-template-columns:1fr; } }
+.details-text h2 { font-size: clamp(48px, 6vw, 88px); line-height: 1; letter-spacing: -0.02em; }
+.details-text h2 em { color: var(--gold); }
+.details-text .lead { margin-top: 32px; }
+.details-list { margin-top: 40px; display: grid; gap: 14px; }
+.details-list li {
+  list-style: none; padding: 16px 0; border-top: 1px solid var(--line);
+  display:flex; justify-content: space-between; align-items:center; font-size: 14px;
+}
+.details-list li:last-child { border-bottom: 1px solid var(--line); }
+.details-list .label { color: var(--ivory); font-family: var(--display); font-style: italic; font-size: 18px; }
+.details-list .val { color: var(--gold); font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; }
+
+.detail-images { display:grid; grid-template-columns:1fr 1fr; grid-template-rows: 240px 240px; gap: 12px; }
+</style>
+</head>
+<body>
+<div id="nav-host" data-active="about"></div>
+
+<section class="about-hero" data-screen-label="01 About — Hero">
+  <div class="grid-bg"></div>
+  <div class="wrap reveal">
+    <div class="section-tag">The maison — established 2017</div>
+    <h1 style="margin-top:28px">A house built on <em>quiet</em><br>and the <em>art of detail.</em></h1>
+    <p class="lead">Le Bien Planner Déco is the work of one woman, a curated bench of partners, and nine years of practice in the rooms where celebration becomes memory.</p>
+  </div>
+</section>
+
+<section data-screen-label="02 About — CEO">
+  <div class="wrap">
+    <div class="ceo-grid">
+      <div class="ceo-portrait reveal">
+        <image-slot id="ceo-portrait" src="img/11-portrait.svg" placeholder="Portrait — Mme Rosy, Creative Director" style="width:100%;height:100%;"></image-slot>
+        <div class="badge">Mme Rosy</div>
+      </div>
+      <div class="ceo-text reveal d2">
+        <div class="section-tag">Founder &amp; Creative Director</div>
+        <h2>I do not plan events. <em>I compose them.</em></h2>
+        <p>Rosy began Le Bien in 2017 after a decade spent in hospitality and brand design — a career that taught her how the smallest detail (a fold of linen, the rhythm of a doorman's greeting) decides whether a room feels rented or remembered.</p>
+        <p>Today she leads every project personally. From the first consultation to the moment your last guest leaves, the eye on the work is hers — supported by a bench of partners chosen, not contracted.</p>
+
+        <div class="ceo-quote">
+          "An event is a piece of theatre that only runs once. My job is to rehearse the things you'll never notice, so that what you <em>do</em> notice is each other."
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="values" data-screen-label="03 About — Values">
+  <div class="wrap">
+    <div class="values-head reveal">
+      <div>
+        <div class="section-tag">Mission · Vision · Values</div>
+        <h2 style="margin-top:24px">Three quiet <em>principles</em><br>guide every project.</h2>
+      </div>
+      <p style="max-width:380px">We are not a vendor and not an agency. We are an atelier — closer to a maison de couture than a planning firm.</p>
+    </div>
+
+    <div class="values-grid reveal">
+      <div class="value">
+        <span class="num">— i. Mission</span>
+        <h3>Compose <em>celebrations</em>, not check lists.</h3>
+        <p>To turn the most important days of your life into a coherent piece of design — emotion, narrative, and detail in one quiet voice.</p>
+      </div>
+      <div class="value">
+        <span class="num">— ii. Vision</span>
+        <h3>Define <em>quiet luxury</em> in American events.</h3>
+        <p>To bring an editorial, atelier sensibility to a market still defined by spectacle — proving restraint is the highest form of celebration.</p>
+      </div>
+      <div class="value">
+        <span class="num">— iii. Values</span>
+        <h3>Discretion, devotion, <em>discipline.</em></h3>
+        <p>Confidentiality with every client. Devotion to the smallest detail. Discipline to deliver, on the day, in silence.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="04 About — Timeline">
+  <div class="wrap">
+    <div class="timeline-grid">
+      <div class="reveal">
+        <div class="section-tag">Chronology</div>
+        <h2 style="margin-top:24px">A house, <em>built slowly.</em></h2>
+        <p style="margin-top:28px;max-width:320px">Nine years of practice, one project at a time.</p>
+      </div>
+      <div class="tl reveal d2">
+        <div class="tl-item"><span class="year">2017</span><div><h4>The atelier opens</h4><p>Rosy founds Le Bien in a small studio in Monroeville. First wedding: 42 guests, a barn, and one borrowed candelabra.</p></div></div>
+        <div class="tl-item"><span class="year">2019</span><div><h4>The bench is built</h4><p>Long-term partnerships formed with the florists, calligraphers and culinary teams who remain with us today.</p></div></div>
+        <div class="tl-item"><span class="year">2021</span><div><h4>Corporate practice</h4><p>First gala for a Pittsburgh institution. The corporate event arm is formalised the following spring.</p></div></div>
+        <div class="tl-item"><span class="year">2023</span><div><h4>Editorial direction</h4><p>The maison's signature — ivory, gold, restraint — is published in three regional design titles.</p></div></div>
+        <div class="tl-item"><span class="year">2025</span><div><h4>Beyond Pennsylvania</h4><p>Active production in Philadelphia and New York. The bench grows to forty-two trusted partners.</p></div></div>
+        <div class="tl-item"><span class="year">2026</span><div><h4>The next chapter</h4><p>A private studio in Fox Hill opens to clients by appointment. Couples dance studio launches.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="details-section" data-screen-label="05 About — Details">
+  <div class="wrap">
+    <div class="details-grid">
+      <div class="details-text reveal">
+        <div class="section-tag">Manifesto</div>
+        <h2 style="margin-top:24px">Luxury is in the <em>details.</em></h2>
+        <p class="lead">It is the temperature of the room when you walk in. The weight of the menu card in your hand. The placement of the first toast.</p>
+        <ul class="details-list">
+          <li><span class="label">The lighting, dimmed twelve minutes before dinner</span><span class="val">— 01</span></li>
+          <li><span class="label">A handwritten card on every place setting</span><span class="val">— 02</span></li>
+          <li><span class="label">A scent, chosen for the room only</span><span class="val">— 03</span></li>
+          <li><span class="label">Music that breathes with the conversation</span><span class="val">— 04</span></li>
+          <li><span class="label">A quiet moment for the couple, before they re-enter</span><span class="val">— 05</span></li>
+        </ul>
+      </div>
+      <div class="detail-images reveal d2">
+        <image-slot id="d1" src="img/08-candle.svg" placeholder="Linen detail"></image-slot>
+        <image-slot id="d2" src="img/05-stationery.svg" placeholder="Candle close-up"></image-slot>
+        <image-slot id="d3" src="img/02-tablescape.svg" placeholder="Menu card"></image-slot>
+        <image-slot id="d4" src="img/03-florals.svg" placeholder="Floral stem"></image-slot>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:140px 0; text-align:center;">
+  <div class="wrap reveal">
+    <div class="section-tag" style="justify-content:center; display:inline-flex">Begin a conversation</div>
+    <h2 style="margin-top:24px; font-size: clamp(40px, 6vw, 80px); line-height:1;">Tell us about <em style="color:var(--gold)">your moment.</em></h2>
+    <div style="margin-top:40px">
+      <a href="booking.html" class="btn btn-gold">Book consultation <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<div id="footer-host"></div>
+<script src="image-slot.js"></script>
+<script src="partials.js"></script>
+</body>
+</html>
