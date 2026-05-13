@@ -44,8 +44,18 @@
 .hero-right .slot2 { grid-row: 1; }
 .hero-right .slot3 { grid-row: 2 / 4; }
 .hero-right .slot4 { grid-row: 3; }
+
+/* ── Tablet stacked layout: 3-col landscape strip ── */
 @media (max-width: 1000px) {
-  .hero-right { grid-template-rows: 180px 160px 120px; }
+  .hero-right {
+    grid-template-columns: 1.4fr 1fr 1fr;
+    grid-template-rows: 260px 180px;
+  }
+  .hero-right .slot1 { grid-column: 1; grid-row: 1 / 3; }
+  .hero-right .slot2 { grid-column: 2; grid-row: 1; }
+  .hero-right .slot3 { grid-column: 3; grid-row: 1; }
+  .hero-right .slot4 { grid-column: 2 / 4; grid-row: 2; }
+  .hero-mono { top: 16px; left: 16px; padding: 14px 18px; }
 }
 
 .hero-mono {
@@ -253,9 +263,9 @@
 
 /* ── HOME — Mobile overrides ─── max-width 900px ── */
 @media (max-width: 900px) {
-  /* Hero section */
-  .hero { padding: 110px 0 56px; }
-  /* Fix hero-mono: pull inside the container (was top/left -40px) */
+  /* Hero: remove forced 100vh when content stacks vertically */
+  .hero { padding: 110px 0 56px; min-height: auto; }
+  /* Fix hero-mono: override the 1000px rule — stay tight to edge */
   .hero-mono { top: 12px; left: 12px; padding: 12px 16px; }
   /* Fix service grid — remove right border in single-column layout */
   .svc, .svc:nth-child(3n) { border-right: none; }
@@ -268,28 +278,31 @@
 @media (max-width: 767px) {
   /* ── Hero ── */
   .hero { padding: 92px 0 48px; min-height: auto; }
-  .hero-left .lead { max-width: 100%; }
+  .hero-grid { gap: 32px; }
+  .hero-left .display { margin-top: 24px; }
+  .hero-left .lead { max-width: 100%; margin-top: 20px; }
   .hero-actions { flex-direction: column; gap: 10px; margin-top: 28px; }
   .hero-actions .btn { width: 100%; justify-content: center; }
-  /* Simplified hero image grid */
+  /* Hero image grid — 2-col portrait when below headline */
   .hero-right {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 180px 145px;
+    grid-template-rows: 190px 150px;
     gap: 8px;
   }
   .hero-right .slot1 { grid-column: 1; grid-row: 1 / 3; }
   .hero-right .slot2 { grid-column: 2; grid-row: 1; }
   .hero-right .slot3 { grid-column: 2; grid-row: 2; }
   .hero-right .slot4 { display: none; }
-  /* Smaller monogram on mobile */
+  /* Monogram badge — scaled down */
   .hero-mono { padding: 10px 14px; }
   .hero-mono .monogram { gap: 8px; }
-  .hero-mono .monogram .mark { width: 64px; }
-  .hero-mono .monogram .top { font-size: 16px; }
-  .hero-mono .monogram .mid { font-size: 13px; }
-  /* Hero meta stats — wrap nicely */
-  .hero-meta { justify-content: flex-start; flex-wrap: wrap; gap: 12px 20px; align-items: flex-start; }
-  .hero-meta-wrap { margin-top: 28px; }
+  .hero-mono .monogram .mark { width: 56px; }
+  .hero-mono .monogram .top { font-size: 15px; }
+  .hero-mono .monogram .mid { font-size: 12px; }
+  .hero-mono .monogram .sub { font-size: 9px; }
+  /* Hero stats bar */
+  .hero-meta { justify-content: flex-start; flex-wrap: wrap; gap: 10px 20px; align-items: flex-start; }
+  .hero-meta-wrap { margin-top: 24px; }
   .hero-meta .item { font-size: 9px; letter-spacing: 0.18em; }
   .hero-meta .item strong { font-size: 11px; margin-bottom: 2px; }
   /* ── Intro ── */
@@ -305,8 +318,26 @@
   }
   .edi-text h2 { font-size: clamp(32px, 8vw, 56px); }
   .edi-pillar { grid-template-columns: 48px 1fr; gap: 14px; padding-top: 18px; }
-  /* ── Gallery teaser ── */
-  .gt-grid { grid-auto-rows: 160px; }
+  /* ── Gallery teaser — editorial mobile layout ── */
+  .gt-head { align-items: flex-start; margin-bottom: 36px; }
+  .gt-head h2 { font-size: clamp(30px, 7.5vw, 52px); }
+  .gt-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: auto;
+    gap: 10px;
+  }
+  /* g1: full-width hero image */
+  .gt-grid .g1 { grid-column: 1 / -1 !important; grid-row: auto !important; height: 320px; }
+  /* g2 + g3: editorial pair */
+  .gt-grid .g2 { height: 200px; }
+  .gt-grid .g3 { height: 200px; }
+  /* g4 + g5: detail pair */
+  .gt-grid .g4 { height: 180px; }
+  .gt-grid .g5 { height: 180px; }
+  /* g6: full-width closing image */
+  .gt-grid .g6 { grid-column: 1 / -1 !important; grid-row: auto !important; height: 220px; }
+  /* g7 + g8: hidden — "All work →" directs to portfolio */
+  .gt-grid .g7, .gt-grid .g8 { display: none; }
   /* ── Testimonials ── */
   .testi h2 { font-size: clamp(28px, 6.5vw, 48px); margin-bottom: 36px; }
   .testi-card { padding: 28px 20px; gap: 18px; }
@@ -324,15 +355,20 @@
 
 @media (max-width: 479px) {
   /* ── Hero ── */
-  .hero { padding: 80px 0 40px; }
+  .hero { padding: 80px 0 36px; }
   .hero-right { display: none; }
+  .hero-meta-wrap { margin-top: 20px; }
   /* ── Editorial image ── */
   .edi-image { height: 260px; }
   .edi-stamp { width: 100px; height: 100px; font-size: 11px; padding: 10px; right: 0; bottom: -12px; }
   .edi-text h2 { font-size: clamp(28px, 8vw, 52px); }
-  /* ── Gallery teaser ── */
-  .gt-grid { grid-auto-rows: 130px; }
-  .gt-head h2 { font-size: clamp(28px, 8vw, 52px); }
+  /* ── Gallery teaser — scaled heights for iPhone 11 ── */
+  .gt-head h2 { font-size: clamp(26px, 8vw, 48px); }
+  .gt-head { margin-bottom: 28px; }
+  .gt-grid .g1 { height: 260px; }
+  .gt-grid .g2, .gt-grid .g3 { height: 160px; }
+  .gt-grid .g4, .gt-grid .g5 { height: 140px; }
+  .gt-grid .g6 { height: 180px; }
   /* ── Testimonials ── */
   .testi-card blockquote { font-size: 15px; }
   /* ── Why — single column ── */
@@ -342,7 +378,7 @@
   .why-cell .big { font-size: 44px; }
   /* ── Services ── */
   .svc { padding: 28px 16px 32px; }
-  /* ── Social feed — stay 2 cols ── */
+  /* ── Social feed ── */
   .feed-grid { gap: 8px; }
 }
 </style>
